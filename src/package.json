@@ -1,0 +1,1 @@
+{"license": "", "description": "Listen to TheRadio.CC in your Firefox Webbrowser", "contributors": [], "author": "ventos", "url": "", "dependencies": ["api-utils", "addon-kit"], "version": "0.1.rev476", "lib": "lib", "fullName": "TheRadio.CC-Player for Firefox", "main": "main", "id": "jid0-kBvLM4bikw7WbeFtk0KBrqmFZhQ", "name": "theradiocc-player-for-firefox"}

@@ -1,0 +1,53 @@
+/* Allgemeines Zeugs */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-image: url(dark_wall.png);
+	background-repeat:repeat;
+	background-attachment:fixed;
+	color: fafafa;
+}
+
+.vbutton {
+	padding: 5px 10px;
+	border-radius: 2px;
+	border-style: none;
+	display: inline;
+	color: #fafafa;
+	font-family: 'Open Sans';
+}
+
+.hide    	{ display: none;	}
+
+
+#knopf {
+    float: left;    
+}
+
+#nowPlaying {
+    float: left;
+    padding-left:10px;
+}
+
+#aktuellertitel {
+    float: left;
+    padding-left:10px;
+}
+
+#menu {
+     padding-left:10px;    
+}
+
+#info {
+    padding-left:10px;    
+}
+
+a {
+    text-decoration: none;
+    color: fafafa;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: fafafa;
+}
