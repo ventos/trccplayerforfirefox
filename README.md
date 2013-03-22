@@ -9,8 +9,8 @@ To install this addon open 'theradiocc-player-for-firefox.xpi' with Firefox.
 
 ## Code ##
 
-To view the code have a look at the 'src'-folder ;)
+To view the code, you will have to look at the 'src'-folder ;)
 
 ## Sources ##
 
-The file '/src/data/dark_wall.png' is by http://subtlepatterns.com/ .
+The file '/src/data/dark_wall.png' is by http://subtlepatterns.com/ and '/src/data/logo.png' is by http://theradio.cc/.
