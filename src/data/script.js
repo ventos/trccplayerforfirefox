@@ -28,22 +28,22 @@ function play() {
 }
 
 function menu() {
-    if (menuschalter == false) {
-        $('div#menu').removeClass("hide");
-        $('div#titlesec').addClass("hide");
-        $('div#info').addClass("hide");
-        menuschalter = true;
-    }
-    else if (menuschalter = true) {
-        $('div#menu').addClass("hide");
-        $('div#titlesec').removeClass("hide");
-        $('div#info').addClass("hide");
-        menuschalter = false;
-    }
+	if (menuschalter == false) {
+	$('div#menu').removeClass("hide");
+	$('div#titlesec').addClass("hide");
+	$('div#info').addClass("hide");
+	menuschalter = true;
+	}
+	else if (menuschalter = true) {
+	$('div#menu').addClass("hide");
+	$('div#titlesec').removeClass("hide");
+	$('div#info').addClass("hide");
+	menuschalter = false;
+	}
 }
 
 /* function info() {
-    $('div#menu').addClass("hide");
-    $('div#titlesec').addClass("hide");
-    $('div#info').removeClass("hide");
+	('div#menu').addClass("hide");
+	$('div#titlesec').addClass("hide");
+	$('div#info').removeClass("hide");
 } */

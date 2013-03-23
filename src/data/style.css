@@ -1,7 +1,7 @@
 /* Allgemeines Zeugs */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans';
 	background-image: url(dark_wall.png);
 	background-repeat:repeat;
 	background-attachment:fixed;
@@ -21,33 +21,33 @@ body {
 
 
 #knopf {
-    float: left;    
+	float: left;    
 }
 
 #nowPlaying {
-    float: left;
-    padding-left:10px;
+	float: left;
+	padding-left:10px;
 }
 
 #aktuellertitel {
-    float: left;
-    padding-left:10px;
+	float: left;
+	padding-left:10px;
 }
 
 #menu {
-     padding-left:10px;    
+	padding-left:10px;    
 }
 
 #info {
-    padding-left:10px;    
+	padding-left:10px;    
 }
 
 a {
-    text-decoration: none;
-    color: fafafa;
+	text-decoration: none;
+	color: fafafa;
 }
 
 a:hover {
-    text-decoration: underline;
-    color: fafafa;
+	text-decoration: underline;
+	color: fafafa;
 }
