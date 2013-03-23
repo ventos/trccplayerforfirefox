@@ -1,34 +1,35 @@
 <html>
-  <head>
-    <title>TheRadio.CC - Player</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-  </head>
-  <body>
+	<head>
+		<title>TheRadio.CC - Player</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</head>
+	<body>
 		<audio id="audioplayer" preload="none">
 			<source src="http://www.theradio.cc:8000/trcc-stream-nometadata.ogg" type="audio/ogg" /> 
 		</audio>
-        <div id="header">
-            <table>
-                <tr><td><a href="http://theradio.cc" target="_blank"><img src="logo.png" width="120" height="42" /></td></a>
-                    <td>freie Musik f&uuml;r freie H&ouml;rer&nbsp;&nbsp;</td>
-                    <td><a href="javascript:menu()"><img src="menu.png"></a></td></tr>
-            </table>
-        </div>
-		<div id="main">
-            <div id="titlesec">
-                <br>
-                <img src="play.png" width="40" height="40" onclick="play()" id="knopf"/>
-                <span id="aktuellertitel">Aktueller Titel:</span><br>
-                <span id="nowPlaying">Also hier sollte <em>eigentlich</em> der Titel stehen ;)</span>
-            </div>
-            <div id="menu" class="hide">
-                <h3>Infos</h3>
-                Den Code gibt's auf <a href="https://github.com/ventos/trccplayerforfirefox" target="_blank">Github</a> und <br>
-                der Hintergrund ist von <a href="http://subtlepatterns.com/" target="_blank">Subtle Patterns</a>.<br>
-            </div>
+		<div id="header">
+			<table>
+				<tr>
+					<td><a href="http://theradio.cc" target="_blank"><img src="logo.png" width="120" height="42" /></a></td>
+					<td>freie Musik f&uuml;r freie H&ouml;rer&nbsp;&nbsp;</td>
+					<td><a href="javascript:menu()"><img src="menu.png"></a></td>
+				</tr>
+			</table>
 		</div>
-    </div>
-  </body>
+		<div id="main">
+			<div id="titlesec">
+				<br>
+				<img src="play.png" width="40" height="40" onclick="play()" id="knopf"/>
+				<span id="aktuellertitel">Aktueller Titel:</span><br>
+				<span id="nowPlaying">Also hier sollte <em>eigentlich</em> der Titel stehen ;)</span>
+			</div>
+			<div id="menu" class="hide">
+				<h3>Infos</h3>
+				Den Code gibt's auf <a href="https://github.com/ventos/trccplayerforfirefox" target="_blank">Github</a> und<br>
+				der Hintergrund ist von <a href="http://subtlepatterns.com/" target="_blank">Subtle Patterns</a>.<br>
+			</div>
+		</div>
+	</body>
 </html>
