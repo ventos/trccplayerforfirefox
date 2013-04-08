@@ -2,7 +2,6 @@ var aktiv = window.setInterval("getCurrentTrack()", 5000);
 getCurrentTrack();
 currentTitle = "";
 schalter = false;
-menuschalter = false;
 
 function getCurrentTrack() {
 	$.get('http://theradio.cc:12011/', function(data) {
@@ -28,22 +27,14 @@ function play() {
 }
 
 function menu() {
-	if (menuschalter == false) {
+	if ($('div#menu').hasClass('hide') == true) {
 	$('div#menu').removeClass("hide");
 	$('div#titlesec').addClass("hide");
 	$('div#info').addClass("hide");
-	menuschalter = true;
 	}
-	else if (menuschalter = true) {
+	else if ($('div#titlesec').hasClass('hide') == true) {
 	$('div#menu').addClass("hide");
 	$('div#titlesec').removeClass("hide");
 	$('div#info').addClass("hide");
-	menuschalter = false;
 	}
 }
-
-/* function info() {
-	('div#menu').addClass("hide");
-	$('div#titlesec').addClass("hide");
-	$('div#info').removeClass("hide");
-} */
