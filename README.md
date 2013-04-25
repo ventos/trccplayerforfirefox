@@ -5,7 +5,7 @@ No restart!
 
 ## Install ##
 
-To install this addon open 'theradiocc-player.xpi' with Firefox or https://addons.mozilla.org/de/firefox/addon/theradiocc-player/
+To install this addon: open 'theradiocc-player.xpi' with Firefox or get it on https://addons.mozilla.org/de/firefox/addon/theradiocc-player/
 
 ## Code ##
 
