@@ -1,14 +1,27 @@
-var aktiv = window.setInterval("getCurrentTrack()", 5000);
-getCurrentTrack();
+var aktiv = window.setInterval("CurrentTrack()", 5000);
+var aktiv = window.setInterval("CurrentListeners()", 30000);
+CurrentTrack();
+CurrentListeners();
 currentTitle = "";
 schalter = false;
 
-function getCurrentTrack() {
+function CurrentTrack() {
 	$.get('http://theradio.cc:12011/', function(data) {
 		if (data != currentTitle) {
 			$('span#nowPlaying').html(data);
 			currentTitle = data;
 		}
+	});
+}
+
+function CurrentListeners() {
+	$.getJSON('http://trcccounter.42cast.de/count.json', function(data) {
+		var items = [];
+			 $.each(data, function(key, val) {
+				if (key == "listeners") {
+				$('span#listeners').html(val);
+				}
+			});
 	});
 }
 
@@ -29,12 +42,12 @@ function play() {
 function menu() {
 	if ($('div#menu').hasClass('hide') == true) {
 	$('div#menu').removeClass("hide");
-	$('div#titlesec').addClass("hide");
+	$('div#start').addClass("hide");
 	$('div#info').addClass("hide");
 	}
-	else if ($('div#titlesec').hasClass('hide') == true) {
+	else if ($('div#start').hasClass('hide') == true) {
 	$('div#menu').addClass("hide");
-	$('div#titlesec').removeClass("hide");
+	$('div#start').removeClass("hide");
 	$('div#info').addClass("hide");
 	}
 }

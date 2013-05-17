@@ -1,11 +1,12 @@
 /* Allgemeines Zeugs */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 body {
 	font-family: 'Open Sans';
-	background-image: url(dark_wall.png);
+	background-image: url(textured_paper.png);
 	background-repeat:repeat;
 	background-attachment:fixed;
-	color: fafafa;
+	color: #0a0a0a;
 }
 
 .vbutton {
@@ -19,6 +20,9 @@ body {
 
 .hide    	{ display: none;	}
 
+#start {
+	margin-left: 1em;
+}
 
 #knopf {
 	float: left;    
@@ -26,28 +30,43 @@ body {
 
 #nowPlaying {
 	float: left;
-	padding-left:10px;
-}
-
-#aktuellertitel {
-	float: left;
-	padding-left:10px;
+	padding-left: 10px;
+	padding-top: 4px;
 }
 
 #menu {
-	padding-left:10px;    
+	padding-left: 10px;    
 }
 
 #info {
-	padding-left:10px;    
+	padding-left: 10px;    
+}
+
+#logo {
+	padding-top: 3px;
 }
 
 a {
 	text-decoration: none;
-	color: fafafa;
+	color: #0a0a0a;
 }
 
 a:hover {
 	text-decoration: underline;
-	color: fafafa;
+	color: #0a0a0a;
+}
+
+#controls {
+	background: url(dark_wall.png);
+	position: fixed;
+    bottom: 0px;
+	left: 0px;
+	width: 100%;
+	padding: 3px;
+	color: #fafafa;
+}
+
+::-moz-selection {
+	background-color: #444; 
+	color: #fafafa;
 }

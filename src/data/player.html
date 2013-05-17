@@ -1,9 +1,10 @@
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>TheRadio.CC - Player</title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
-        	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="jquery-2.0.0.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
@@ -13,23 +14,25 @@
 		<div id="header">
 			<table>
 				<tr>
-					<td><a href="http://theradio.cc" target="_blank"><img src="logo.png" width="120" height="42" /></a></td>
+					<td><a href="http://theradio.cc" target="_blank"><img src="logo.png" id="logo" width="120" height="42" /></a></td>
 					<td>freie Musik f&uuml;r freie H&ouml;rer&nbsp;&nbsp;</td>
 					<td><a href="javascript:menu()"><img src="menu.png"></a></td>
 				</tr>
 			</table>
 		</div>
 		<div id="main">
-			<div id="titlesec">
+			<div id="start">
 				<br>
-				<img src="play.png" width="40" height="40" onclick="play()" id="knopf"/>
-				<span id="aktuellertitel">Aktueller Titel:</span><br>
-				<span id="nowPlaying">Also hier sollte <em>eigentlich</em> der Titel stehen ;)</span>
+				<div id="hoerer">Momentan gibt es <span id="listeners">0</span> TheRadio.CC-H&ouml;rer</div>
 			</div>
 			<div id="menu" class="hide">
 				<h3>Infos</h3>
 				Den Code und mehr Infos gibt's auf <a href="https://github.com/ventos/trccplayerforfirefox" target="_blank">Github</a>.<br>
 				Der Hintergrund ist von <a href="http://subtlepatterns.com/" target="_blank">Subtle Patterns</a>.<br>
+			</div>
+			<div id="controls">
+				<img src="play.png" width="40" height="40" onclick="play()" id="knopf"/>
+				<span id="nowPlaying"><em>Please check your Internet connection</em></span>
 			</div>
 		</div>
 	</body>
