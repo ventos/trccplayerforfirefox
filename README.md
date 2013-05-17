@@ -13,4 +13,4 @@ To view the code, you will have to look at the 'src'-folder ;)
 
 ## Sources ##
 
-The file '/src/data/dark_wall.png' is by http://subtlepatterns.com/ and '/src/data/logo.png' is by http://theradio.cc/.
+The files '/src/data/dark_wall.png' and '/src/data/textured_paper.png' are by http://subtlepatterns.com/ .
