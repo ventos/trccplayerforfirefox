@@ -2,7 +2,7 @@ data = require("self").data
 
 var PlayerPanel = require("panel").Panel({
     width:415,
-    height:215,
+    height:230,
     contentURL: data.url("player.html")
 });
 

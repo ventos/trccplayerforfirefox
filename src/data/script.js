@@ -6,7 +6,7 @@ currentTitle = "";
 schalter = false;
 
 function CurrentTrack() {
-	$.get('http://theradio.cc:12011/', function(data) {
+    $.get('http://theradio.cc:12011/', function(data) {
 		if (data != currentTitle) {
 			$('span#nowPlaying').html(data);
 			currentTitle = data;
