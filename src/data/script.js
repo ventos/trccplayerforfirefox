@@ -2,7 +2,7 @@ var aktiv = window.setInterval("CurrentTrack()", 5000);
 var aktiv = window.setInterval("CurrentListeners()", 30000);
 CurrentTrack();
 CurrentListeners();
-currentTitle = "";
+var currentTitle = "";
 schalter = false;
 
 function CurrentTrack() {
