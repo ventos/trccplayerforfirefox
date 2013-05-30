@@ -3,7 +3,6 @@ var aktiv = window.setInterval("CurrentListeners()", 30000);
 CurrentTrack();
 CurrentListeners();
 var currentTitle = "";
-schalter = false;
 
 function CurrentTrack() {
     $.get('http://theradio.cc:12011/', function(data) {
@@ -26,17 +25,16 @@ function CurrentListeners() {
 }
 
 function play() {
-	if (schalter == false) {
 	document.getElementById("audioplayer").play();
 	document.getElementById("knopf").src = "stop.png";
-	schalter = true;
-	}
-	else if (schalter == true) {
+	$('img#knopf').attr('onclick', 'pause()');
+}
+
+function pause() {
 	document.getElementById("audioplayer").src = "";
 	document.getElementById("audioplayer").src = "http://www.theradio.cc:8000/trcc-stream-nometadata.ogg";
 	document.getElementById("knopf").src = "play.png";
-	schalter = false;
-	}
+	$('img#knopf').attr('onclick', 'play()');
 }
 
 function menu() {
