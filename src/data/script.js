@@ -33,6 +33,7 @@ function play() {
 function pause() {
 	document.getElementById("audioplayer").src = "";
 	document.getElementById("audioplayer").src = "http://www.theradio.cc:8000/trcc-stream-nometadata.ogg";
+	document.getElementById("audioplayer").pause();
 	document.getElementById("knopf").src = "play.png";
 	$('img#knopf').attr('onclick', 'play()');
 }

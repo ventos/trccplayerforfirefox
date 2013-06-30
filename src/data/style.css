@@ -3,19 +3,10 @@
 
 body {
     font-family: 'Open Sans';
-	background-image: url(textured_paper.png);
+	background: #292929;
 	background-repeat:repeat;
 	background-attachment:fixed;
-	color: #0a0a0a;
-}
-
-.vbutton {
-	padding: 5px 10px;
-	border-radius: 2px;
-	border-style: none;
-	display: inline;
-	color: #fafafa;
-	font-family: 'Open Sans';
+	color: rgb(233, 233, 233);
 }
 
 .hide    	{ display: none;	}
@@ -32,14 +23,29 @@ body {
 	float: left;
 	padding-left: 10px;
 	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 #menu {
-	padding-left: 10px;    
+	padding-left: 10px;
+	clear: all;
 }
 
 #info {
 	padding-left: 10px;    
+}
+
+#hoerer {
+	display: inline-block;
+	padding: 2px 4px;
+	font-size: 12px;;
+	font-weight: bold;
+	line-height: 14px;
+	color: rgb(233, 233, 233);
+	border-radius: 3px;
+	background-color: rgb(58, 135, 173);
+	float: right;
+	margin-right: 33px;
 }
 
 #logo {
@@ -48,25 +54,26 @@ body {
 
 a {
 	text-decoration: none;
-	color: #0a0a0a;
+	color: rgb(233, 233, 233);
 }
 
 a:hover {
 	text-decoration: underline;
-	color: #0a0a0a;
+	color: rgb(233, 233, 233);
 }
 
 #controls {
-	background: url(dark_wall.png);
+	background: #252525;
 	position: fixed;
     bottom: 0px;
 	left: 0px;
 	width: 100%;
 	padding: 3px;
-	color: #fafafa;
+	color: rgb(233, 233, 233);
+	box-shadow: 0px 2px 5px 4px rgb(233, 233, 233); ;
 }
 
 ::-moz-selection {
 	background-color: #444; 
-	color: #fafafa;
+	color: rgb(233, 233, 233);
 }
