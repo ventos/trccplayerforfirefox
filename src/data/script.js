@@ -6,7 +6,7 @@ var currentTitle = "";
 
 function CurrentTrack() {
     $.get('http://theradio.cc:12011/', function(data) {
-		if (data != currentTitle) {
+    	if (data != currentTitle) {
 			$('span#nowPlaying').html(data);
 			currentTitle = data;
 		}
@@ -50,3 +50,15 @@ function menu() {
 	$('div#info').addClass("hide");
 	}
 }
+
+$(window).keydown(function(e) {
+    switch (e.keyCode) {
+        case 89:
+    		play();
+            return false;
+        case 88:
+			pause();
+			return false;
+    }
+    return;
+});
