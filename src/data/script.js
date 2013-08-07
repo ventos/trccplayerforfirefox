@@ -3,6 +3,8 @@ var aktiv = window.setInterval("CurrentListeners()", 30000);
 CurrentTrack();
 CurrentListeners();
 var currentTitle = "";
+var request = "";
+var engineturl = "";
 
 function CurrentTrack() {
     $.get('http://theradio.cc:12011/', function(data) {
@@ -51,6 +53,25 @@ function menu() {
 	}
 }
 
+function search(engine) {
+	switch (engine) {
+		case "google":
+			engineturl = "https://www.google.de/search?q=";
+			break;
+		case "jamendo":
+			engineturl = "https://www.jamendo.com/de/search?qs=q=";
+			break;
+		case "bandcamp":
+			engineturl = "https://bandcamp.com/search?q=";
+			break;
+	}
+	request = currentTitle;
+	if (request.startsWith(" - ") == true) {
+		request = request.substr(3);
+	}
+	window.open(engineturl + request, '_blank');
+}
+
 $(window).keydown(function(e) {
     switch (e.keyCode) {
         case 89:
@@ -59,6 +80,19 @@ $(window).keydown(function(e) {
         case 88:
 			pause();
 			return false;
+		case 71:
+			search("google");
+			return false;
+		case 74:
+			search("jamendo");
+			return false;
+		case 66:
+			search("bandcamp");
+			return false;
     }
     return;
 });
+
+// https://bandcamp.com/search?q=
+// https://www.jamendo.com/de/search?qs=q=
+// https://www.google.de/search?q=

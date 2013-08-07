@@ -23,7 +23,12 @@
 		<div id="main">
 			<div id="start">
 				<br>
-				<div id="hoerer"><span id="listeners">0</span> H&ouml;rer</div>
+				<div id="suche">
+					<button id="hoerer"><span id="listeners">0</span> H&ouml;rer</button><br>
+					<button id="google" onclick="search('google')">Google</button><br>
+					<button id="jamendo" onclick="search('jamendo')">Jamendo</button><br>
+					<button id="bandcamp" onclick="search('bandcamp')">Bandcamp</button>
+				</div>
 				<div>
 					<img src="play.png" width="50" height="50" onclick="play()" id="knopf"/>
 				</div>
