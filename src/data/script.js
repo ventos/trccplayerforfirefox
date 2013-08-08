@@ -92,7 +92,3 @@ $(window).keydown(function(e) {
     }
     return;
 });
-
-// https://bandcamp.com/search?q=
-// https://www.jamendo.com/de/search?qs=q=
-// https://www.google.de/search?q=
