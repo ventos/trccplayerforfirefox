@@ -41,16 +41,8 @@ function pause() {
 }
 
 function menu() {
-	if ($('div#menu').hasClass('hide') == true) {
-	$('div#menu').removeClass("hide");
-	$('div#start').addClass("hide");
-	$('div#info').addClass("hide");
-	}
-	else if ($('div#start').hasClass('hide') == true) {
-	$('div#menu').addClass("hide");
-	$('div#start').removeClass("hide");
-	$('div#info').addClass("hide");
-	}
+	$('div#menu').toggleClass("hide");
+	$('div#start').toggleClass("hide");
 }
 
 function search(engine) {
