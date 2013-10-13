@@ -1,14 +1,15 @@
 var aktiv = window.setInterval("CurrentTrack()", 5000);
 var aktiv = window.setInterval("CurrentListeners()", 30000);
-CurrentTrack();
-CurrentListeners();
 var currentTitle = "";
+var currentVersion = "0.2.0.6.rev44";
 var request = "";
 var engineturl = "";
+CurrentTrack();
+CurrentListeners();
 
 function CurrentTrack() {
     $.get('http://theradio.cc:12011/', function(data) {
-    	if (data != currentTitle) {
+        if (data != currentTitle) {
 			$('span#nowPlaying').html(data);
 			currentTitle = data;
 		}
