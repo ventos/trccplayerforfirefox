@@ -17,7 +17,7 @@ function CurrentTrack() {
 }
 
 function CurrentListeners() {
-	$.getJSON('http://trcccounter.42cast.de/count.json', function(data) {
+	$.getJSON('http://counter.theradio.cc/count.json', function(data) {
 		var items = [];
 			 $.each(data, function(key, val) {
 				if (key == "listeners") {
