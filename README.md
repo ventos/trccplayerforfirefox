@@ -1,21 +1,21 @@
-# TheRadio.CC-Player for Firefox #
+# TheRadio.CC-Player for Firefox 0.3#
 
 Listen to http://theradio.cc in your Firefox Webbrowser.
 No restart!
 
 
-**The xpi-file is not up to date, so the counter won't work.**
+**Work only Firefox >29**
 
 
 ### Shortcuts ###
-`Ctrl+Shift+Y` to show the player panel
-`Ctrl+Alt+Y` to hide the player panel
+`Ctrl+Shift+X` to show the player panel
+`Ctrl+Alt+X` to hide the player panel
+
+##### In Addon #####
 `y` to play and `x` to pause
 
 ## Install ##
 
-To install this addon: open 'theradiocc-player.xpi' with Firefox or get it on https://addons.mozilla.org/de/firefox/addon/theradiocc-player/
+To install this addon: open 'theradiocc-player.xpi' with Firefox
 
-## Code ##
 
-To view the code, you will have to look at the 'src'-folder ;)
