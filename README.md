@@ -4,7 +4,7 @@ Listen to http://theradio.cc in your Firefox Webbrowser.
 No restart!
 
 
-**Work only Firefox >29**
+**Works only with Firefox >29**
 
 
 ### Shortcuts ###
@@ -17,5 +17,3 @@ No restart!
 ## Install ##
 
 To install this addon: open 'theradiocc-player.xpi' with Firefox
-
-
