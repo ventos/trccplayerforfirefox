@@ -1,23 +1,29 @@
 var t1 = window.setInterval("currentSong()", 5000);
-//var t2 = window.setInterval("currentListeners()", 30000);
+var t2 = window.setInterval("currentListeners()", 30000);
 var currentTitle = "";
 currentSong();
-//currentListeners();
+currentListeners();
 
 function currentSong() {
 	$.get('http://theradio.cc:12011/', function(data) {
             if (data != currentTitle) {
-                $('span#np').html(data);
+                var display = data;
+                if (data.startsWith("- ") == true) {
+                    display = data.substr(2);
+                } else if (data.startsWith(" - ") == true) {
+                    display = data.substr(3);
+                }
+                $('span#np').html(display);
                 currentTitle = data;
             }
         });
 }
 
-/*function currentListeners() {
-        jQuery.get("http://counter.theradio.cc/count.json", function(data, textStatus, jqXHR) {
-          jQuery("#listeners").html(data["listeners"]);
+function currentListeners() {
+        $.get("http://counter.theradio.cc/count.json", function(data) {
+          $("#listeners").html(data["listeners"]);
         });
-}*/
+}
 
 function play() {
         document.getElementById("audio").play();
@@ -53,7 +59,9 @@ function search(engine) {
         request = currentTitle;
         if (request.startsWith(" - ") == true) {
                 request = request.substr(3);
-        }
+        } else if (request.startsWith("- ") == true) {
+				request = request.substr(2);
+		}
         window.open(engineturl + request, '_blank');
 }
 
@@ -77,4 +85,3 @@ $(window).keydown(function(e) {
     }
     return;
 });
-
