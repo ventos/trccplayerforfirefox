@@ -1,20 +1,34 @@
 var t1 = window.setInterval("currentSong()", 5000);
 var t2 = window.setInterval("currentListeners()", 30000);
 var currentTitle = "";
+var broadcast = false;
 currentSong();
 currentListeners();
 
 function currentSong() {
-	$.get('http://theradio.cc:12011/', function(data) {
+    $.get('http://theradio.cc:12011/', function(data) {
             if (data != currentTitle) {
                 var display = data;
                 if (data.startsWith("- ") == true) {
                     display = data.substr(2);
+                    broadcast = true;
                 } else if (data.startsWith(" - ") == true) {
                     display = data.substr(3);
+                    broadcast = true;
+                } else {
+                    broadcast = false;
                 }
                 $('span#np').html(display);
                 currentTitle = data;
+                if (broadcast == true) {
+                    if ($("#sendung").hasClass("hide")) {
+                        $("#sendung").removeClass("hide");
+                    }
+                } else if (broadcast == false) {
+                    if ($("#sendung").hasClass("hide") == false) {
+                        $("#sendung").addClass("hide");
+                    }
+                }
             }
         });
 }
@@ -58,10 +72,10 @@ function search(engine) {
         }
         request = currentTitle;
         if (request.startsWith(" - ") == true) {
-                request = request.substr(3);
+            request = request.substr(3);
         } else if (request.startsWith("- ") == true) {
-				request = request.substr(2);
-		}
+            request = request.substr(2);
+        }
         window.open(engineturl + request, '_blank');
 }
 
