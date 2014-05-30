@@ -1,4 +1,8 @@
 # Changelog #
+### v0.3.0.6 ###
+
+	* `fix` RECHTSCHREIBUNG!
+
 ### v0.3.0.5 ###
 
   * `added` show whether there is a broadcast on air
