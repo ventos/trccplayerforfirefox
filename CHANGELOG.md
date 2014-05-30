@@ -7,4 +7,4 @@
 
   * `fix` current listeners
   * `fix` current title
-  * `fix` search functiona
+  * `fix` search function

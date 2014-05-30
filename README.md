@@ -18,7 +18,7 @@ No restart!
 
 To install this addon: open 'theradiocc-player.xpi' with Firefox
 
-### Build it yourself ###
+### Building ###
 
 In the following is shown how to build the addon yourself using the Addon SDK 1.16
 
