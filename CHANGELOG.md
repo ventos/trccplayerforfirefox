@@ -1,4 +1,8 @@
 # Changelog #
+### v0.3.0.8 ###
+
+  * `changed` font family to Fira Sans
+
 ### v0.3.0.7 ###
 
   * `fix` quickfixes for Firefox 31.0a2 (font size)
