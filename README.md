@@ -3,6 +3,8 @@
 Listen to http://theradio.cc in your Firefox Webbrowser.
 No restart!
 
+![screenshot](https://raw.githubusercontent.com/ventos/trccplayerforfirefox/master/doc/screenshot.png)
+
 
 **Works only with Firefox >29**
 
