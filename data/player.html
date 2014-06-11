@@ -30,10 +30,14 @@
 					</div>
 					<img id="knopf" src="play.png" width="50" height="50" onclick="play()" />
 				</div>
-				<div id="menu" class="hide">
+				<div id="about" class="hide">
 					<strong>Informationen</strong><br>
 					Add-on zum H&ouml;ren von <a href="http://theradio.cc" target="_blank">TheRadio.CC</a>.<br>
 					Zusammengebastelt von <a href="https://github.com/ventos" target="_blank">ventos</a>
+				</div>
+				<div id="wishlist" class="hide">
+					Hier gibt's bald 'ne neue Funktion und so...<br>
+					Desshalb auch das neue Men&uuml;
 				</div>
 				<div id="status">
 					<span id="np"><em>Please check your internet connection</em></span>
@@ -43,9 +47,9 @@
 		<div id="offcanvas">
 			<div id="title">Men&uuml;</div>
 			<ul>
-				<li>Player</li>
-				<li>Merkliste</li>
-				<li>&Uuml;ber</li>
+				<li id="menuPlayer" class="menuactive">Player</li>
+				<li id="menuWishlist">Merkliste</li>
+				<li id="menuAbout">&Uuml;ber</li>
 			</ul>
 		</div>
 	</body>

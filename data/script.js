@@ -34,31 +34,50 @@ function currentSong() {
 }
 
 function currentListeners() {
-        $.get("http://counter.theradio.cc/count.json", function(data) {
-          $("#listeners").html(data["listeners"]);
-        });
+    $.get("http://counter.theradio.cc/count.json", function(data) {
+      $("#listeners").html(data["listeners"]);
+    });
 }
 
 function play() {
-        document.getElementById("audio").play();
-        document.getElementById("knopf").src = "stop.png";
-        $('img#knopf').attr('onclick', 'pause()');
+    document.getElementById("audio").play();
+    document.getElementById("knopf").src = "stop.png";
+    $('img#knopf').attr('onclick', 'pause()');
 }
 
 function pause() {
-        document.getElementById("audio").src = "";
-        document.getElementById("audio").src = "http://ogg.theradio.cc";
-        document.getElementById("audio").pause();
-        document.getElementById("knopf").src = "play.png";
-        $('img#knopf').attr('onclick', 'play()');
+    document.getElementById("audio").src = "";
+    document.getElementById("audio").src = "http://ogg.theradio.cc";
+    document.getElementById("audio").pause();
+    document.getElementById("knopf").src = "play.png";
+    $('img#knopf').attr('onclick', 'play()');
 }
 
 function OLDmenu() {
-        $('div#menu').toggleClass("hide");
-        $('div#landing').toggleClass("hide");
+    $('div#about').toggleClass("hide");
+    $('div#landing').toggleClass("hide");
 }
 
+function offCanvas(id) {
+    $("#menuPlayer").removeClass("menuactive");
+    $("#menuWishlist").removeClass("menuactive");
+    $("#menuAbout").removeClass("menuactive");
+    $(id).addClass("menuactive");
+}
 
+function page(id) {
+    switch(id) {
+        case "#landing":
+            // Do smth with landing
+            break;
+        case "#about":
+            // Do smth with landing
+            break;
+        case "#wishlist":
+            // Do smth with landing
+            break;
+    }
+}
 
 function search(engine) {
         switch (engine) {
@@ -131,5 +150,14 @@ $(function() {
         } else {
             fadeOut(600);
         }
+    });
+    $("#menuPlayer").click(function() {
+        offCanvas("#menuPlayer");
+    });
+    $("#menuWishlist").click(function() {
+        offCanvas("#menuWishlist");
+    });
+    $("#menuAbout").click(function() {
+        offCanvas("#menuAbout");
     });
 });
