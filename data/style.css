@@ -1,4 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Fira+Sans:300,400);
+@font-face {
+	font-family: "FontAwesome";
+	font-style: normal;
+	font-weight: normal;
+	src: url(fontawesome-webfont.woff) format("woff");
+}
 body {
 	background: url(blackprint.png);
 	background-repeat: repeat;
@@ -24,6 +30,24 @@ body {
 	right: 19px;
 }
 
+#add {
+	/* grey: #797C80, blue: #177EE5 */
+	position: absolute;
+	top: 17px;
+	right: 60px;
+	font-family: "FontAwesome";
+	border: none;
+	padding: 0;
+	font-size: 20px;
+	font-style: normal;
+	margin: 0;
+	color: #797C80;
+	background: transparent;
+}
+#add:before {
+	content: "\f005";
+}
+
 #solgan {
 	position: absolute;
 	top: 17px;
@@ -36,6 +60,7 @@ body {
 }
 #buttons {
 	float: right;
+	margin-right: 5px;
 }
 	#buttons button {
 		padding: 2px 4px;
@@ -64,18 +89,45 @@ body {
 }
 
 #status {
-	position: fixed;
-	left: 0;
+	position: absolute;
+	left: -2px;
 	bottom: 0;
 	width: 100%;
 	padding: 3px;
-	padding-left: 12px;
 	color: #fafafa;
-	box-shadow: 0px 2px 5px 4px #0072be;
+	box-shadow: 0 -5px 5px -5px #0072be;
 	font-size: 16px;
 }
+	#np {
+		padding-left: 9px;
+	}
+
+#canvas {
+	background: url(blackprint.png);
+	background-repeat: repeat;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	box-shadow: 0px 2px 6px 4px #0072be;
+}
+
+#offcanvas {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 170px;
+	height: 100%;
+	background: url(whiteprint.png);
+	z-index: -3;
+}
+
+
 
 .hide { display: none; }
+.added { color: #177EE5 !important; }
 
 a {
 	text-decoration: none;

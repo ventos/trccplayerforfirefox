@@ -53,10 +53,12 @@ function pause() {
         $('img#knopf').attr('onclick', 'play()');
 }
 
-function menu() {
+function OLDmenu() {
         $('div#menu').toggleClass("hide");
         $('div#landing').toggleClass("hide");
 }
+
+
 
 function search(engine) {
         switch (engine) {
@@ -79,6 +81,21 @@ function search(engine) {
         window.open(engineturl + request, '_blank');
 }
 
+function fadeOut() {
+    $("#canvas").animate({
+        left: "-170px"
+    }, 700, function() {
+        // console.log("DEBUG: Canvas Out");
+    });
+}
+function fadeIn() {
+    $("#canvas").animate({
+        left: "0"
+    }, 700, function() {
+        // console.log("DEBUG: Canvas In");
+    });
+}
+
 $(window).keydown(function(e) {
     switch (e.keyCode) {
         case 89:
@@ -98,4 +115,28 @@ $(window).keydown(function(e) {
                         return false;
     }
     return;
+});
+
+// Document Ready
+$(function() {
+    
+    $("#add").click(function() {
+        if (!$("#add").hasClass("added")) {
+            $("#add").css("font-size", "30px");
+            $("#add").animate({
+                "font-size": "20px"
+            }, 400, function() {
+                // console.log("DEBUG: Canvas In");
+            });
+        }
+        $("#add").toggleClass("added");
+    });
+
+    $("#mbtn").click(function() {
+        if ($("#canvas").css("left") == "-170px") {
+            fadeIn();
+        } else {
+            fadeOut();
+        }
+    });
 });

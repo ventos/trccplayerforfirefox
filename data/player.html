@@ -6,37 +6,46 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
-	</head>
+		</head>
 	<body>
 		<audio id="audio" preload="none">
 			<source src="http://ogg.theradio.cc" type="audio/ogg" />
 		</audio>
 		<noscript>JavaScirpt is required!</noscript>
-		<div id="header">
-			<a href="http://theradio.cc" target="_blank" id="linklogo"><img src="theradiocc.png"></a>
-			<span id="solgan">Freie Musik f&uuml;r freie H&ouml;rer</span>
-			<a id="mbtn" href="javascript:menu()"><img src="menu.png"></a>
-		</div>
-		<div id="main">
-			<div id="landing">
-				<div id="buttons">
-					<button id="sendung" class="hide">Sendung!</button><br>
-					<button id="hoerer"><span id="listeners">-1</span> H&ouml;rer</button><br>
-					<button id="google" onclick="search('google')">Google</button><br>
-					<button id="jamendo" onclick="search('jamendo')">Jamendo</button><br>
-					<button id="bandcamp" onclick="search('bandcamp')">Bandcamp</button>
-
+		<div id="canvas">
+			<div id="header">
+				<a href="http://theradio.cc" target="_blank" id="linklogo"><img src="theradiocc.png"></a>
+				<span id="solgan">Freie Musik f&uuml;r freie H&ouml;rer</span>
+				<button id="add"></button>
+				<a id="mbtn"><img src="menu.png"></a>
+			</div>
+			<div id="main">
+				<div id="landing">
+					<div id="buttons">
+						<button id="sendung" class="hide">Sendung!</button><br>
+						<button id="hoerer"><span id="listeners">-1</span> H&ouml;rer</button><br>
+						<button id="google" onclick="search('google')">Google</button><br>
+						<button id="jamendo" onclick="search('jamendo')">Jamendo</button><br>
+						<button id="bandcamp" onclick="search('bandcamp')">Bandcamp</button>
+					</div>
+					<img id="knopf" src="play.png" width="50" height="50" onclick="play()" />
 				</div>
-				<img id="knopf" src="play.png" width="50" height="50" onclick="play()" />
+				<div id="menu" class="hide">
+					<strong>Informationen</strong><br>
+					Add-on zum H&ouml;ren von <a href="http://theradio.cc" target="_blank">TheRadio.CC</a>.<br>
+					Zusammengebastelt von <a href="https://github.com/ventos" target="_blank">ventos</a>
+				</div>
+				<div id="status">
+					<span id="np"><em>Please check your internet connection</em></span>
+				</div>
 			</div>
-			<div id="menu" class="hide">
-				<strong>Informationen</strong><br>
-				Add-on zum H&ouml;ren von <a href="http://theradio.cc" target="_blank">TheRadio.CC</a>.<br>
-				Zusammengebastelt von <a href="https://github.com/ventos" target="_blank">ventos</a>
-			</div>
-			<div id="status">
-				<span id="np"><em>Please check your internet connection</em></span>
-			</div>
+		</div>
+		<div id="offcanvas">
+			<ul>
+				<li>Player</li>
+				<li>Merkliste</li>
+				<li>Info</li>
+			</ul>
 		</div>
 	</body>
 </html>
