@@ -4,13 +4,22 @@ var currentTitle = "";
 var broadcast = false;
 var Song;
 var Songs = new Array();
+initWishlist();
 currentSong();
 currentListeners();
-initWishlist();
 
 function currentSong() {
     $.get('http://theradio.cc:12011/', function(data) {
             if (data != currentTitle) {
+                if (isInWishlist(data)) {
+                    if (!$("#add").hasClass("added")) {
+                        $("#add").addClass("added");
+                    }
+                } else {
+                    if ($("#add").hasClass("added")) {
+                        $("#add").removeClass("added");
+                    }
+                }
                 var display = data;
                 if (data.startsWith("- ") == true) {
                     display = data.substr(2);
@@ -160,9 +169,11 @@ $(function() {
             $("#add").animate({
                 "font-size": "20px"
             }, 400, function() {});
+            addSong();
+        } else {
+            removeSong(currentTitle);
         }
         $("#add").toggleClass("added");
-        addSong();
     });
 
     $("#mbtn").click(function() {
@@ -194,14 +205,45 @@ $(function() {
 });
 
 function addSong() {
-    if (localStorage.getItem("trccplayer-wishlist") == null) {
-       Song = "$@%" + currentTitle + "\n";
+    if (!isInWishlist(currentTitle)) {
+        // IF NOT in wishlist then we will add that
+        console.log("DEBUG: ADD");
+        if (localStorage.getItem("trccplayer-wishlist") == null) {
+           Song = "$@%" + currentTitle + "\n";
+        } else {
+           Song = localStorage.getItem("trccplayer-wishlist") + "$@%" + currentTitle + "\n";
+        }
+        localStorage.setItem("trccplayer-wishlist", Song);
+        $("#wishlist").html(localStorage.getItem("trccplayer-wishlist"));
+        console.log("Length Songs[]: " + Songs.length);
+        Songs[Songs.length] = currentTitle;
+    } // ELSE nothing to do
+}
+
+function removeSong(songToRemove) {
+    if (isInWishlist(songToRemove)) {
+        /* Vor Replace §$§ hhinzufügen, weil er sonst nicht entferenen kann,
+         und dannach wenn vorhanden, also for split wieder entferenen */
+        var SongString  = "§$§" + Songs.join("§$§");
+            console.log("SongString:" + SongString);
+        var searchthing = "§$§" + songToRemove;
+        SongString = SongString.replace(searchthing, "");
+            console.log("DEBUG: Dings:" + SongString);
+        if (SongString.startsWith("§$§")) {
+            SongString = SongString.substr(3);
+        }
+        var SongSplit = SongString.split("§$§");
+        Songs = new Array();
+        for (var i = 0; i < SongSplit.length; i++) {
+            var c = (i - 1);
+            Songs[c] = SongSplit[i];
+            console.log("DEBUG:" + Songs[c]);
+        };
+       Save();
     } else {
-       Song = localStorage.getItem("trccplayer-wishlist") + "$@%" + currentTitle + "\n";
+        // Nothing to remove
+        console.log("DEBUG: NOTHING TO REMOVE");
     }
-    localStorage.setItem("trccplayer-wishlist", Song);
-    $("#wishlist").html(localStorage.getItem("trccplayer-wishlist"));
-    console.log("Length Songs[]: " + Songs.length());
 }
 
 function initWishlist() {
@@ -220,4 +262,16 @@ function initWishlist() {
     }
     // ELSE: nothing to do, there are no songs on the wishlist
 
+}
+
+function isInWishlist(checkthing) {
+    // Check if the String to check is already in the wishlist
+    var EverythingInAString = Songs.join(" ");
+    return (EverythingInAString.indexOf(checkthing) > -1);
+}
+
+function Save() {
+    var songtmp = "$@%" + Songs.join("\n$@%");
+    songtmp = songtmp.substr(0, songtmp.length - 3);
+    localStorage.setItem("trccplayer-wishlist", songtmp);
 }
