@@ -85,9 +85,9 @@ body {
 	margin-top: 25px;
 }
 
-#about {
+#about, #wishlist {
 	color: #fafafa;
-	padding-left: 20px;
+	padding: 0 20px;
 }
 
 #status {

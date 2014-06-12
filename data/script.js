@@ -68,28 +68,45 @@ function offCanvas(id) {
 function page(id) {
     switch(id) {
         case "#landing":
-            // Do smth with landing
-            break;
-        case "#about":
-            // Do smth with landing
+            var mainID = "#landing";
+            var secondID = "#wishlist";
+            var thirdID = "#about";
             break;
         case "#wishlist":
-            // Do smth with landing
+            var mainID = "#wishlist";
+            var secondID = "#about";
+            var thirdID = "#landing";
             break;
+        case "#about":
+            var mainID = "#about";
+            var secondID = "#landing";
+            var thirdID = "#wishlist";
+            break;
+    }
+    if (!$(mainID).hasClass("hide")) {
+        //Dann passt alles, also nichts tun
+    } else if (!$(secondID).hasClass("hide")) {
+        $(mainID).removeClass("hide");
+        $(secondID).addClass("hide");
+        // Und dem dritten brauch ich auch nichts tun, weil des is ja dann schon versteckt, also passt da auch alles
+    } else if (!$(thirdID).hasClass("hide")) {
+        $(mainID).removeClass("hide");
+        // Diesmal sollte es beim zeiten passen
+        $(thirdID).addClass("hide");
     }
 }
 
 function search(engine) {
         switch (engine) {
-                case "google":
-                        engineturl = "https://www.google.de/search?q=";
-                        break;
-                case "jamendo":
-                        engineturl = "https://www.jamendo.com/de/search?qs=q=";
-                        break;
-                case "bandcamp":
-                        engineturl = "https://bandcamp.com/search?q=";
-                        break;
+            case "google":
+                engineturl = "https://www.google.de/search?q=";
+                break;
+            case "jamendo":
+                engineturl = "https://www.jamendo.com/de/search?qs=q=";
+                break;
+            case "bandcamp":
+                engineturl = "https://bandcamp.com/search?q=";
+                break;
         }
         request = currentTitle;
         if (request.startsWith(" - ") == true) {
@@ -153,11 +170,17 @@ $(function() {
     });
     $("#menuPlayer").click(function() {
         offCanvas("#menuPlayer");
+        page("#landing");
+        fadeIn(400);
     });
     $("#menuWishlist").click(function() {
         offCanvas("#menuWishlist");
+        page("#wishlist");
+        fadeIn(400);
     });
     $("#menuAbout").click(function() {
         offCanvas("#menuAbout");
+        page("#about");
+        fadeIn(400);
     });
 });
