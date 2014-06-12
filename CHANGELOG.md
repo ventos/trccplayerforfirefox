@@ -1,4 +1,9 @@
 # Changelog #
+### v0.3.1.0 ###
+
+	* `changed` menu
+	* `added` wishlist for songs
+
 ### v0.3.0.8 ###
 
   * `changed` font family to Fira Sans
