@@ -235,9 +235,8 @@ function removeSong(songToRemove) {
         var SongSplit = SongString.split("§$§");
         Songs = new Array();
         for (var i = 0; i < SongSplit.length; i++) {
-            var c = (i - 1);
-            Songs[c] = SongSplit[i];
-            console.log("DEBUG:" + Songs[c]);
+            Songs[i] = SongSplit[i];
+            console.log("DEBUG:" + Songs[i]);
         };
        Save();
     } else {
