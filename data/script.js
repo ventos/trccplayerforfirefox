@@ -2,8 +2,11 @@ var t1 = window.setInterval("currentSong()", 5000);
 var t2 = window.setInterval("currentListeners()", 30000);
 var currentTitle = "";
 var broadcast = false;
+var Song;
+var Songs = new Array();
 currentSong();
 currentListeners();
+initWishlist();
 
 function currentSong() {
     $.get('http://theradio.cc:12011/', function(data) {
@@ -159,6 +162,7 @@ $(function() {
             }, 400, function() {});
         }
         $("#add").toggleClass("added");
+        addSong();
     });
 
     $("#mbtn").click(function() {
@@ -171,16 +175,49 @@ $(function() {
     $("#menuPlayer").click(function() {
         offCanvas("#menuPlayer");
         page("#landing");
-        fadeIn(400);
+        fadeIn(600);
     });
     $("#menuWishlist").click(function() {
         offCanvas("#menuWishlist");
         page("#wishlist");
-        fadeIn(400);
+        fadeIn(600);
     });
     $("#menuAbout").click(function() {
         offCanvas("#menuAbout");
         page("#about");
-        fadeIn(400);
+        fadeIn(600);
+    });
+    $("#deleteWish").click(function() {
+        localStorage.removeItem("trccplayer-wishlist");
+        fadeIn(600);
     });
 });
+
+function addSong() {
+    if (localStorage.getItem("trccplayer-wishlist") == null) {
+       Song = "$@%" + currentTitle + "\n";
+    } else {
+       Song = localStorage.getItem("trccplayer-wishlist") + "$@%" + currentTitle + "\n";
+    }
+    localStorage.setItem("trccplayer-wishlist", Song);
+    $("#wishlist").html(localStorage.getItem("trccplayer-wishlist"));
+    console.log("Length Songs[]: " + Songs.length());
+}
+
+function initWishlist() {
+    // Init the Array with the Songs stored in the localStorage
+    if (localStorage.getItem("trccplayer-wishlist") != null) {
+        var wishlistItems = localStorage.getItem("trccplayer-wishlist");
+
+        var wishlistItemsLength = (wishlistItems.split("$@%").length - 1);
+        console.log("DEBUG:" + wishlistItemsLength + " Songs are on the wishlist");
+        var splitted = wishlistItems.split("$@%");
+        for (var i = 1; i <= wishlistItemsLength; i++) {
+            var c = (i - 1);
+            Songs[c] = splitted[i].substr(0, splitted[i].length - 1);
+            console.log("DEBUG:" + Songs[c]);
+        };
+    }
+    // ELSE: nothing to do, there are no songs on the wishlist
+
+}
