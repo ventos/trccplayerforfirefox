@@ -170,10 +170,10 @@ $(function() {
                 "font-size": "20px"
             }, 400, function() {});
             addSong();
+            $("#add").toggleClass("added");
         } else {
             removeSong(currentTitle);
         }
-        $("#add").toggleClass("added");
         render();
     });
 

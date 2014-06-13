@@ -1,4 +1,8 @@
 # Changelog #
+### v0.3.1.1 ###
+
+	* `fix` double click to remove a song, using the star, is notnecessary anymore
+
 ### v0.3.1.0 ###
 
   * `changed` menu
