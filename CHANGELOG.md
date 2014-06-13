@@ -1,8 +1,8 @@
 # Changelog #
 ### v0.3.1.0 ###
 
-	* `changed` menu
-	* `added` wishlist for songs
+  * `changed` menu
+  * `added` wishlist for songs
 
 ### v0.3.0.8 ###
 
