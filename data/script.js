@@ -179,26 +179,26 @@ $(function() {
 
     $("#mbtn").click(function() {
         if ($("#canvas").css("left") == "-170px") {
-            fadeIn(600);
+            fadeIn(400);
         } else {
-            fadeOut(600);
+            fadeOut(400);
         }
     });
     $("#menuPlayer").click(function() {
         offCanvas("#menuPlayer");
         page("#landing");
-        fadeIn(600);
+        fadeIn(400);
     });
     $("#menuWishlist").click(function() {
         offCanvas("#menuWishlist");
         page("#wishlist");
         render();
-        fadeIn(600);
+        fadeIn(400);
     });
     $("#menuAbout").click(function() {
         offCanvas("#menuAbout");
         page("#about");
-        fadeIn(600);
+        fadeIn(400);
     });
 });
 

@@ -1,4 +1,8 @@
 # Changelog #
+### v0.3.1.2 ##
+
+  * `changed` set animation time to 400ms
+
 ### v0.3.1.1 ###
 
 	* `fix` double click to remove a song, using the star, is notnecessary anymore
