@@ -1,16 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Fira+Sans:300,400);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400);
 @font-face {
-	font-family: "FontAwesome";
-	font-style: normal;
-	font-weight: normal;
-	src: url(fontawesome-webfont.woff) format("woff");
+		  font-family: 'octicons';
+		  src: url('octicons.woff') format('woff');
 }
 body {
 	background: url(blackprint.png);
 	background-repeat: repeat;
-	font-family: "Fira Sans";
-	font-weight: 300;
+	font-family: "Open Sans";
+	font-size: 400;
 	font-size: 16px;
 	color rgb(250, 250, 250);
 }
@@ -33,11 +30,11 @@ body {
 }
 
 #add {
-	/* grey: #797C80, blue: #177EE5 */
+	/* grey: #797C80, blue: #177EE5, red: #a0000d; */
 	position: absolute;
-	top: 17px;
-	right: 60px;
-	font-family: "FontAwesome";
+	top: 16px;
+	right: 66px;
+	font-family: "octicons";
 	border: none;
 	padding: 0;
 	font-size: 20px;
@@ -47,14 +44,15 @@ body {
 	background: transparent;
 }
 #add:before {
-	content: "\f005";
+	content: "\2665";
 }
 
 #solgan {
 	position: absolute;
-	top: 17px;
-	left: 138px;
+	top: 18px;
+	left: 135px;
 	color: rgb(250, 250, 250);
+	font-size: 14px;
 }
 
 #main {
@@ -65,13 +63,17 @@ body {
 	margin-right: 5px;
 }
 	#buttons button {
-		padding: 2px 4px;
+		height: 21px;
+		width: 92px;
+		padding 0px;
+		margin: 15px -5px 15px 0;
 		font-size: 12px;
-		font-family: "Fira Sans";
-		font-weight: 400;
+		font-family: "Open Sans";
+		font-weight: normal;
 		line-height: 14px;
 		border: none;
-		border-radius: 3px;
+		border-top-left-radius: 19px;
+		border-bottom-left-radius: 19px;
 		color: rgb(250, 250, 250);
 	}	
 		#sendung { background: rgb(255, 101, 0);}
@@ -79,6 +81,36 @@ body {
 		#google { background: rgb(66, 133, 244); }
 		#jamendo { background: rgb(105, 62, 105); }
 		#bandcamp { background: rgb(97, 154, 169); }
+
+	#buttons button:before {
+		content: "\f02e  ";
+		font-family: "octicons";
+	}
+
+#hoerer {
+	position: absolute;
+	top: 68px;
+	right: 110px;
+	border: none;
+	border-radius: 300px;
+	height: 60px;
+	width: 60px;
+	font-size: 14px;
+	color: rgb(250, 250, 250);
+}
+	#hoerer #listeners { font-size: 24px; }
+
+#sendung {
+	position: absolute;
+	top: 68px;
+	right: 180px;
+	border: none;
+	border-radius: 300px;
+	height: 60px;
+	width: 60px;
+	color: rgb(250, 250, 250);
+}
+	#sendung:before { content: "\f030"; font-family: "octicons"; font-size: 26px; }
 
 #knopf {
 	margin-left: 7px;
@@ -88,7 +120,8 @@ body {
 #about, #wishlist {
 	color: #fafafa;
 	padding: 0 20px;
-	height: 148px;
+	height: 153px;
+	font-size: 15px;
 	overflow-y: scroll;
 }
 #wishlist ul {
@@ -116,7 +149,7 @@ body {
 	padding: 3px;
 	color: #fafafa;
 	box-shadow: 0 -5px 10px -5px #0072be;
-	font-size: 16px;
+	font-size: 15px;
 }
 	#np {
 		padding-left: 9px;
@@ -178,7 +211,7 @@ body {
 }
 
 .hide { display: none; }
-.added { color: #177EE5 !important; }
+.added { color: #d30011 !important; }
 .menuactive { background: rgb(243, 243, 243); }
 
 a {
@@ -189,3 +222,15 @@ a:hover {
 	text-decoration: underline;
 	color: #fff;
 }
+#about a {
+	text-decoration: none;
+    border-bottom: 1px dotted #fafafa;
+    color: #fff;
+}
+#about a:hover {
+	text-decoration: none;
+    border-bottom: 1px solid #fafafa;
+    color: #fff;
+}
+
+::-moz-selection { color: #fafafa; background: #b90000; }

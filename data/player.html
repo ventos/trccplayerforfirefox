@@ -11,7 +11,7 @@
 		<audio id="audio" preload="none">
 			<source src="http://ogg.theradio.cc" type="audio/ogg" />
 		</audio>
-		<noscript>JavaScirpt is required!</noscript>
+		<noscript>JavaScirpt is required! (For file://, jquery.com and theradio.cc)</noscript>
 		<div id="canvas">
 			<div id="header">
 				<a href="http://theradio.cc" target="_blank" id="linklogo"><img src="theradiocc.png"></a>
@@ -22,19 +22,21 @@
 			<div id="main">
 				<div id="landing">
 					<div id="buttons">
-						<button id="sendung" class="hide">Sendung!</button><br>
-						<button id="hoerer"><span id="listeners">-1</span> H&ouml;rer</button><br>
 						<button id="google" onclick="search('google')">Google</button><br>
 						<button id="jamendo" onclick="search('jamendo')">Jamendo</button><br>
 						<button id="bandcamp" onclick="search('bandcamp')">Bandcamp</button>
 					</div>
 					<img id="knopf" src="play.png" width="50" height="50" onclick="play()" />
+					<div id="graph">
+						<button id="sendung" class="hide"></button><br>
+						<button id="hoerer"><span id="listeners">-1</span> H&ouml;rer</button><br>
+					</div>
 				</div>
 				<div id="about" class="hide">
-					<strong>&Uuml;ber den Player</strong><br>
+					<strong>&Uuml;ber</strong><br>
 					Add-on zum H&ouml;ren von <a href="http://theradio.cc" target="_blank">TheRadio.CC</a>.<br>
-					Tolle Icons dank <a href="http://fontawesome.io" target="_blank">FontAwesome</a>.<br>
-					Zusammengebastelt von <a href="https://github.com/ventos" target="_blank">ventos</a>.
+					Hierbei wird ihnen die Typographie von den <a href="http://octicons.github.com" target="_blank">GitHub Octions</a> und Open Sans pr&auml;sentiert ;).<br><br>
+					Quellcode u.&auml;. ist im <a href="https://github.com/ventos/trccplayerforfirefox" target="_blank">GitHub Repo</a> zu finden.
 				</div>
 				<div id="wishlist" class="hide">
 				</div>

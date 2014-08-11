@@ -1,11 +1,18 @@
 # Changelog #
-### v0.3.1.2 ##
+### v0.3.1.5 ###
+
+  * `changed` switched from FontAwesome to Octicons
+  * `improved` ui
+  * `fixed` font, because of rendering problems (#6)
+  * `fixed` Saving error while a broadcast is live (#5)
+
+### v0.3.1.2 ###
 
   * `changed` set animation time to 400ms
 
 ### v0.3.1.1 ###
 
-	* `fix` double click to remove a song, using the star, is notnecessary anymore
+  * `fix` double click to remove a song, using the star, is notnecessary anymore
 
 ### v0.3.1.0 ###
 

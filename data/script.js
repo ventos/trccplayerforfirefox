@@ -11,7 +11,18 @@ currentListeners();
 function currentSong() {
     $.get('http://theradio.cc:12011/', function(data) {
             if (data != currentTitle) {
-                if (isInWishlist(data)) {
+                if (data.startsWith("- ") == true) {
+                    currentTitle = data.substr(2);
+                    broadcast = true;
+                } else if (data.startsWith(" - ") == true) {
+                    currentTitle = data.substr(3);
+                    broadcast = true;
+                } else {
+                    currentTitle = data;
+                    broadcast = false;
+                }
+                $('span#np').html(currentTitle);
+                if (isInWishlist(currentTitle)) {
                     if (!$("#add").hasClass("added")) {
                         $("#add").addClass("added");
                     }
@@ -20,18 +31,6 @@ function currentSong() {
                         $("#add").removeClass("added");
                     }
                 }
-                var display = data;
-                if (data.startsWith("- ") == true) {
-                    display = data.substr(2);
-                    broadcast = true;
-                } else if (data.startsWith(" - ") == true) {
-                    display = data.substr(3);
-                    broadcast = true;
-                } else {
-                    broadcast = false;
-                }
-                $('span#np').html(display);
-                currentTitle = data;
                 if (broadcast == true) {
                     if ($("#sendung").hasClass("hide")) {
                         $("#sendung").removeClass("hide");
@@ -120,13 +119,7 @@ function search(engine) {
                 engineturl = "https://bandcamp.com/search?q=";
                 break;
         }
-        request = currentTitle;
-        if (request.startsWith(" - ") == true) {
-            request = request.substr(3);
-        } else if (request.startsWith("- ") == true) {
-            request = request.substr(2);
-        }
-        window.open(engineturl + request, '_blank');
+        window.open(engineturl + currentTitle, '_blank');
 }
 
 function fadeOut(time) {
