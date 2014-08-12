@@ -133,6 +133,61 @@ function fadeIn(time) {
     }, time, function() {});
 }
 
+function volume(mode) {
+    var currentVolume = parseInt($("#ls").html());
+    switch (mode) {
+        case "up":
+            if (currentVolume <= 80) {
+                n = currentVolume + 20;
+                changeVol(n, currentVolume);
+            }
+            break;
+        case "down":
+            if (currentVolume >= 20) {
+                n = currentVolume - 20;
+                changeVol(n, currentVolume);
+            }
+            break;
+        case "max":
+            changeVol(100, currentVolume);
+            break;
+        case "min":
+            changeVol(0, currentVolume);
+            break;
+    }
+}
+
+function changeVol(to, old) {
+    if (old == 0 && to > 0) {
+        $("#volume").removeClass("mute");
+    } else if (old > 0 && to == 0) {
+        $("#volume").addClass("mute");
+    }
+    // Ugly way, but calculating in js sucks
+    audi = document.getElementById("audio");
+    switch(to) {
+        case 0:
+            audi.volume = 0;
+            break;
+        case 20:
+            audi.volume = 0.2;
+            break;
+        case 40:
+            audi.volume = 0.4;
+            break;
+        case 60:
+            audi.volume = 0.6;
+            break;
+        case 80:
+            audi.volume = 0.8;
+            break;
+        case 100:
+            audi.volume = 1;
+            break;
+    }
+    $("#ls").html(to);
+}
+
 $(window).keydown(function(e) {
     switch (e.keyCode) {
         case 89:
@@ -149,6 +204,30 @@ $(window).keydown(function(e) {
             return false;
         case 66:
             search("bandcamp");
+            return false;
+        case 107:
+            volume("up");
+            return false;
+        case 109:
+            volume("down");
+            return false;
+        case 54:
+            volume("min");
+            return false;
+        case 55:
+            volume("max");
+            return false;
+        case 56:
+            volume("down");
+            return false;
+        case 57:
+            volume("up");
+            return false;
+        case 106:
+            volume("max");
+            return false;
+        case 111:
+            volume("min");
             return false;
     }
     return;

@@ -1,4 +1,8 @@
 # Changelog #
+### v0.3.2 ###
+
+  * `added` volume control
+  
 ### v0.3.1.5 ###
 
   * `changed` switched from FontAwesome to Octicons

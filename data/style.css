@@ -89,7 +89,7 @@ body {
 
 #hoerer {
 	position: absolute;
-	top: 68px;
+	top: 64px;
 	right: 110px;
 	border: none;
 	border-radius: 300px;
@@ -102,8 +102,8 @@ body {
 
 #sendung {
 	position: absolute;
-	top: 68px;
-	right: 180px;
+	top: 64px;
+	right: 175px;
 	border: none;
 	border-radius: 300px;
 	height: 60px;
@@ -111,6 +111,22 @@ body {
 	color: rgb(250, 250, 250);
 }
 	#sendung:before { content: "\f030"; font-family: "octicons"; font-size: 26px; }
+
+
+#volume {
+	position: absolute;
+	top: 129px;
+	right: 110px;
+	border: none;
+	border-radius: 300px;
+	height: 60px;
+	width: 60px;
+	color: rgb(250, 250, 250);
+	background: rgb(135,173,58);
+}
+
+	#volume:before { content: "\f0ba"; font-family: "octicons"; font-size: 26px;}
+	#volume.mute:before { content: "\f080"; font-family: "octicons"; font-size: 26px;}
 
 #knopf {
 	margin-left: 7px;
