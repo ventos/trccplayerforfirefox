@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400);
 @font-face {
-		  font-family: 'octicons';
-		  src: url('octicons.woff') format('woff');
+	font-family: 'octicons';
+	src: url('octicons.woff') format('woff');
 }
 body {
 	background: url(blackprint.png);
@@ -155,8 +155,25 @@ body {
 #wishlist ul li:hover {
 	background: rgba(8, 101, 183, 0.7);
 }
+#wishlist ul li:after {
+	content: "\f02e  ";
+	font-family: "octicons";
+}
 
 
+#shortcuts code {
+	background: #eee;
+	padding: 0px 4px;
+	color: rgba(0, 0 , 0, 0.7);
+	border-radius: 4px;
+}
+
+#shortcuts {
+	margin: 0 2.5em;
+	color: #fafafa;
+	font-size: 14px;
+	line-height: 1.6;
+}
 #status {
 	position: absolute;
 	left: -2px;

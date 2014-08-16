@@ -64,49 +64,6 @@ function pause() {
     $('img#knopf').attr('onclick', 'play()');
 }
 
-function OLDmenu() {
-    $('div#about').toggleClass("hide");
-    $('div#landing').toggleClass("hide");
-}
-
-function offCanvas(id) {
-    $("#menuPlayer").removeClass("menuactive");
-    $("#menuWishlist").removeClass("menuactive");
-    $("#menuAbout").removeClass("menuactive");
-    $(id).addClass("menuactive");
-}
-
-function page(id) {
-    switch(id) {
-        case "#landing":
-            var mainID = "#landing";
-            var secondID = "#wishlist";
-            var thirdID = "#about";
-            break;
-        case "#wishlist":
-            var mainID = "#wishlist";
-            var secondID = "#about";
-            var thirdID = "#landing";
-            break;
-        case "#about":
-            var mainID = "#about";
-            var secondID = "#landing";
-            var thirdID = "#wishlist";
-            break;
-    }
-    if (!$(mainID).hasClass("hide")) {
-        //Dann passt alles, also nichts tun
-    } else if (!$(secondID).hasClass("hide")) {
-        $(mainID).removeClass("hide");
-        $(secondID).addClass("hide");
-        // Und dem dritten brauch ich auch nichts tun, weil des is ja dann schon versteckt, also passt da auch alles
-    } else if (!$(thirdID).hasClass("hide")) {
-        $(mainID).removeClass("hide");
-        // Diesmal sollte es beim zeiten passen
-        $(thirdID).addClass("hide");
-    }
-}
-
 function search(engine) {
         switch (engine) {
             case "google":
@@ -122,16 +79,7 @@ function search(engine) {
         window.open(engineturl + currentTitle, '_blank');
 }
 
-function fadeOut(time) {
-    $("#canvas").animate({
-        left: "-170px"
-    }, time, function() {});
-}
-function fadeIn(time) {
-    $("#canvas").animate({
-        left: "0"
-    }, time, function() {});
-}
+/******** VOLUME ********/
 
 function volume(mode) {
     var currentVolume = parseInt($("#ls").html());
@@ -188,6 +136,10 @@ function changeVol(to, old) {
     $("#ls").html(to);
 }
 
+/*******************/
+
+/**** SHORTCUTS ****/
+
 $(window).keydown(function(e) {
     switch (e.keyCode) {
         case 89:
@@ -233,6 +185,8 @@ $(window).keydown(function(e) {
     return;
 });
 
+/********************/
+
 // Document Ready
 $(function() {
     $("#add").click(function() {
@@ -272,7 +226,81 @@ $(function() {
         page("#about");
         fadeIn(400);
     });
+    $("#menuShortcuts").click(function() {
+        offCanvas("#menuShortcuts");
+        page("#shortcuts");
+        fadeIn(400);
+    });
 });
+
+/*********** ANIMATION STUFF (MENU) ***********/
+/**********************************************/
+
+function offCanvas(id) {
+    $("#menuPlayer").removeClass("menuactive");
+    $("#menuWishlist").removeClass("menuactive");
+    $("#menuAbout").removeClass("menuactive");
+    $("#menuShortcuts").removeClass("menuactive");
+    $(id).addClass("menuactive");
+}
+
+function page(id) {
+    switch(id) {
+        case "#landing":
+            var mainID = "#landing";
+            var secondID = "#wishlist";
+            var thirdID = "#about";
+            var fourthID = "#shortcuts";
+            break;
+        case "#wishlist":
+            var mainID = "#wishlist";
+            var secondID = "#about";
+            var thirdID = "#shortcuts";
+            var fourthID = "#landing";
+            break;
+        case "#about":
+            var mainID = "#about";
+            var secondID = "#shortcuts";
+            var thirdID = "#landing";
+            var fourthID = "#wishlist";
+            break;
+        case "#shortcuts":
+            var mainID = "#shortcuts";
+            var secondID = "#landing";
+            var thirdID = "#wishlist";
+            var fourthID = "#about";
+            break;
+    }
+    if (!$(mainID).hasClass("hide")) {
+        //Dann passt alles, also nichts tun
+    } else if (!$(secondID).hasClass("hide")) {
+        $(mainID).removeClass("hide");
+        $(secondID).addClass("hide");
+        // Und dem dritten brauch ich auch nichts tun, weil des is ja dann schon versteckt, also passt da auch alles
+    } else if (!$(thirdID).hasClass("hide")) {
+        $(mainID).removeClass("hide");
+        // Diesmal sollte es beim zeiten passen
+        $(thirdID).addClass("hide");
+    } else if (!$(fourthID).hasClass("hide")) {
+        $(mainID).removeClass("hide");
+        $(fourthID).addClass("hide");
+        // Hier wieder nach dem Prizip: das was da war kommt weg, und das was wird brauchen kommt her :)
+    }
+}
+
+function fadeOut(time) {
+    $("#canvas").animate({
+        left: "-170px"
+    }, time, function() {});
+}
+function fadeIn(time) {
+    $("#canvas").animate({
+        left: "0"
+    }, time, function() {});
+}
+
+/********************** WISHLIST PART **********************/
+/***********************************************************/
 
 function addSong() {
     if (!isInWishlist(currentTitle)) {
@@ -290,22 +318,19 @@ function addSong() {
 function removeSong(songToRemove) {
     if (isInWishlist(songToRemove)) {
         /* Vor Replace §$§ hhinzufügen, weil er sonst nicht entferenen kann,
-         und dannach wenn vorhanden, also for split wieder entferenen */
+           und dannach wenn vorhanden, also for split wieder entferenen 
+           Auch, wenn ich nicht weiß, warum das nicht so sein sollte        */
         var SongString  = "§$§" + Songs.join("§$§");
         var searchthing = "§$§" + songToRemove;
         SongString = SongString.replace(searchthing, "");
         if (SongString.startsWith("§$§")) {
             SongString = SongString.substr(3);
         }
-        var SongSplit = SongString.split("§$§");
-        Songs = new Array();
-        for (var i = 0; i < SongSplit.length; i++) {
-            Songs[i] = SongSplit[i];
-        };
-       Save();
-       if (songToRemove == currentTitle) {
+        Songs = SongString.split("§$§");
+        Save();
+        if (songToRemove == currentTitle) {
             $("#add").removeClass("added");
-       }
+        }
     } // Nothing to remove
 }
 
@@ -333,9 +358,11 @@ function isInWishlist(checkthing) {
 }
 
 function Save() {
-    var songtmp = "$@%" + Songs.join("\n$@%");
-    songtmp = songtmp.substr(0, songtmp.length - 3);
-    localStorage.setItem("trccplayer-wishlist", songtmp);
+    // Here only save the thing, if there is something to save, only to be sure
+    if (Songs.length > 0) {
+        var songtmp = "$@%" + Songs.join("\n$@%") + "\n";
+        localStorage.setItem("trccplayer-wishlist", songtmp);
+    }
 }
 
 function render() {

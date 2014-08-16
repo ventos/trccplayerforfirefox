@@ -1,4 +1,9 @@
 # Changelog #
+### v0.3.2.1 ###
+
+  * `added` shortcuts overview
+  * `fixed` wishlist bug
+
 ### v0.3.2 ###
 
   * `added` volume control
