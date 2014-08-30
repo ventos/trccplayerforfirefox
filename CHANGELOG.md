@@ -1,4 +1,9 @@
 # Changelog #
+### v0.3.2.2 ###
+
+  * `fixed` display problems with the bandcamp search button
+  * `update` addon-sdk (will switch the jpm as soon as possible)
+
 ### v0.3.2.1 ###
 
   * `added` shortcuts overview
