@@ -1,4 +1,11 @@
 # Changelog #
+
+### v0.3.3 ###
+
+  * `improved` ui
+  * `removed` jamendo and bandcamp search, because of bad search results (may add ddg?!)
+  * `improved` wishlist ui
+
 ### v0.3.2.2 ###
 
   * `fixed` display problems with the bandcamp search button

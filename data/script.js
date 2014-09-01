@@ -4,6 +4,7 @@ var currentTitle = "";
 var broadcast = false;
 var Song;
 var Songs = new Array();
+var lastttl = "TheRadio.CC - Player";
 initWishlist();
 currentSong();
 currentListeners();
@@ -21,7 +22,6 @@ function currentSong() {
                     currentTitle = data;
                     broadcast = false;
                 }
-                $('span#np').html(currentTitle);
                 if (isInWishlist(currentTitle)) {
                     if (!$("#add").hasClass("added")) {
                         $("#add").addClass("added");
@@ -40,6 +40,13 @@ function currentSong() {
                         $("#sendung").addClass("hide");
                     }
                 }
+                np = currentTitle.split(" - ");
+                artist = np[0];
+                song = np.join(" - ").substr(artist.length + 3);
+                $('#curTitle').html(song);
+                $('span#curArtist').html(artist);
+                var n = $("#curTitle").height() + 14;
+                $("#curArtist").css("top", n + "px");
             }
         });
 }
@@ -107,9 +114,9 @@ function volume(mode) {
 
 function changeVol(to, old) {
     if (old == 0 && to > 0) {
-        $("#volume").removeClass("mute");
+        $("#vol").removeClass("mute");
     } else if (old > 0 && to == 0) {
-        $("#volume").addClass("mute");
+        $("#vol").addClass("mute");
     }
     // Ugly way, but calculating in js sucks
     audi = document.getElementById("audio");
@@ -191,10 +198,6 @@ $(window).keydown(function(e) {
 $(function() {
     $("#add").click(function() {
         if (!$("#add").hasClass("added")) {
-            $("#add").css("font-size", "30px");
-            $("#add").animate({
-                "font-size": "20px"
-            }, 400, function() {});
             addSong();
             $("#add").toggleClass("added");
         } else {
@@ -204,7 +207,7 @@ $(function() {
     });
 
     $("#mbtn").click(function() {
-        if ($("#canvas").css("left") == "-170px") {
+        if ($("#offcanvas").css("left") == "-170px") {
             fadeIn(400);
         } else {
             fadeOut(400);
@@ -213,25 +216,81 @@ $(function() {
     $("#menuPlayer").click(function() {
         offCanvas("#menuPlayer");
         page("#landing");
-        fadeIn(400);
+        fadeOut(400);
+        npup();
+        setTitle("TheRadio.CC - Player");
     });
     $("#menuWishlist").click(function() {
         offCanvas("#menuWishlist");
         page("#wishlist");
         render();
-        fadeIn(400);
+        fadeOut(400);
+        npdown();
+        setTitle("Merkliste");
     });
     $("#menuAbout").click(function() {
         offCanvas("#menuAbout");
         page("#about");
-        fadeIn(400);
+        fadeOut(400);
+        npdown();
+        setTitle("&Uuml;ber");
     });
     $("#menuShortcuts").click(function() {
         offCanvas("#menuShortcuts");
         page("#shortcuts");
-        fadeIn(400);
+        fadeOut(400);
+        npdown();
+        setTitle("Tastaturk&uuml;rzel");
+    });
+    $("#play").click(function() {
+        if (!$("#play").hasClass("pause")) {
+            $("#play").addClass("pause");
+            document.getElementById("audio").play();
+        } else {
+            $("#play").removeClass("pause");
+            document.getElementById("audio").src = "";
+            document.getElementById("audio").src = "http://ogg.theradio.cc";
+            document.getElementById("audio").pause();
+        }
+    });
+    $("#weg").click(function() {
+        if ($("#weg").hasClass("up")) {
+            npup();
+        } else {
+            npdown();
+        }
     });
 });
+
+function npup() {
+    if ($("#weg").hasClass("up")) {
+        $("#weg").removeClass("up");
+        $("#weg").addClass("down");
+        $("#status").animate({
+            height: "184px"
+        }, 400, function() {});
+    }
+}
+
+function npdown () {
+    if (!$("#weg").hasClass("up")) {
+        $("#weg").addClass("up");
+        $("#weg").removeClass("down");
+        $("#status").animate({
+            height: "26px"
+        }, 400, function() {});
+    }
+}
+
+function setTitle(name) {
+    titletmp = $("#title").html();
+    if (name == "prev") {
+        $("#title").html(lastttl);
+    } else {
+        $("#title").html(name);
+    }
+    lastttl = titletmp;
+}
 
 /*********** ANIMATION STUFF (MENU) ***********/
 /**********************************************/
@@ -288,14 +347,16 @@ function page(id) {
     }
 }
 
-function fadeOut(time) {
-    $("#canvas").animate({
-        left: "-170px"
+function fadeIn(time) {
+    setTitle("Men&uuml;");
+    $("#offcanvas").animate({
+        left: "0px"
     }, time, function() {});
 }
-function fadeIn(time) {
-    $("#canvas").animate({
-        left: "0"
+function fadeOut(time) {
+    setTitle("prev");
+    $("#offcanvas").animate({
+        left: "-170px"
     }, time, function() {});
 }
 
