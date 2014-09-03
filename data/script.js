@@ -45,8 +45,6 @@ function currentSong() {
                 song = np.join(" - ").substr(artist.length + 3);
                 $('#curTitle').html(song);
                 $('span#curArtist').html(artist);
-                var n = $("#curTitle").height() + 14;
-                $("#curArtist").css("top", n + "px");
             }
         });
 }
@@ -57,33 +55,37 @@ function currentListeners() {
     });
 }
 
-function play() {
-    document.getElementById("audio").play();
-    document.getElementById("knopf").src = "stop.png";
-    $('img#knopf').attr('onclick', 'pause()');
+function playpause() {
+    if (!$("#play").hasClass("pause")) {
+        $("#play").addClass("pause");
+        document.getElementById("audio").play();
+    } else {
+        $("#play").removeClass("pause");
+        document.getElementById("audio").src = "";
+        document.getElementById("audio").src = "http://ogg.theradio.cc";
+        document.getElementById("audio").pause();
+    }
 }
 
-function pause() {
-    document.getElementById("audio").src = "";
-    document.getElementById("audio").src = "http://ogg.theradio.cc";
-    document.getElementById("audio").pause();
-    document.getElementById("knopf").src = "play.png";
-    $('img#knopf').attr('onclick', 'play()');
-}
-
-function search(engine) {
-        switch (engine) {
-            case "google":
-                engineturl = "https://www.google.de/search?q=";
+function search(query) {
+        switch (searchengine) {
+            case "ggl":
+                engineurl = "https://www.google.de/search?q=";
+                break;
+            case "ddg":
+                engineurl = "https://duckduckgo.com/?q=";
                 break;
             case "jamendo":
-                engineturl = "https://www.jamendo.com/de/search?qs=q=";
+                engineurl = "https://www.jamendo.com/de/search?qs=q=";
                 break;
             case "bandcamp":
-                engineturl = "https://bandcamp.com/search?q=";
+                engineurl = "https://bandcamp.com/search?q=";
+                break;
+            default:
+                engineturl = "https://www.google.de/search?q=";
                 break;
         }
-        window.open(engineturl + currentTitle, '_blank');
+        window.open(engineurl + query, '_blank');
 }
 
 /******** VOLUME ********/
@@ -149,20 +151,8 @@ function changeVol(to, old) {
 
 $(window).keydown(function(e) {
     switch (e.keyCode) {
-        case 89:
-            play();
-            return false;
-        case 88:
-            pause();
-            return false;
-        case 71:
-            search("google");
-            return false;
-        case 74:
-            search("jamendo");
-            return false;
-        case 66:
-            search("bandcamp");
+        case 32:
+            playpause();
             return false;
         case 107:
             volume("up");
@@ -196,6 +186,13 @@ $(window).keydown(function(e) {
 
 // Document Ready
 $(function() {
+    if (localStorage.getItem("trccplayer-searchengine") == "ggl") {
+        searchengine = "ggl";
+        $("#ggl").addClass("setactive");
+    } else {
+        searchengine = "ddg";
+         $("#ddg").addClass("setactive");
+    }
     $("#add").click(function() {
         if (!$("#add").hasClass("added")) {
             addSong();
@@ -217,6 +214,7 @@ $(function() {
         offCanvas("#menuPlayer");
         page("#landing");
         fadeOut(400);
+        $("#explore").addClass("hide");
         npup();
         setTitle("TheRadio.CC - Player");
     });
@@ -225,6 +223,7 @@ $(function() {
         page("#wishlist");
         render();
         fadeOut(400);
+        $("#explore").addClass("hide");
         npdown();
         setTitle("Merkliste");
     });
@@ -232,6 +231,7 @@ $(function() {
         offCanvas("#menuAbout");
         page("#about");
         fadeOut(400);
+        $("#explore").addClass("hide");
         npdown();
         setTitle("&Uuml;ber");
     });
@@ -239,25 +239,45 @@ $(function() {
         offCanvas("#menuShortcuts");
         page("#shortcuts");
         fadeOut(400);
+        $("#explore").addClass("hide");
         npdown();
         setTitle("Tastaturk&uuml;rzel");
     });
+    $("#menuSettings").click(function() {
+        offCanvas("#menuSettings");
+        page("#settings");
+        fadeOut(400);
+        $("#explore").addClass("hide");
+        npdown();
+        setTitle("Einstellungen");
+    });
     $("#play").click(function() {
-        if (!$("#play").hasClass("pause")) {
-            $("#play").addClass("pause");
-            document.getElementById("audio").play();
-        } else {
-            $("#play").removeClass("pause");
-            document.getElementById("audio").src = "";
-            document.getElementById("audio").src = "http://ogg.theradio.cc";
-            document.getElementById("audio").pause();
-        }
+        playpause();
     });
     $("#weg").click(function() {
         if ($("#weg").hasClass("up")) {
             npup();
         } else {
             npdown();
+        }
+    });
+    $("#search").click(function() {
+        search(currentTitle);
+    });
+    $("#ddg").click(function() {
+        if (!$(this).hasClass("setactive")) {
+            $(this).addClass("setactive");
+            $("#ggl").removeClass("setactive");
+            searchengine = "ddg";
+            localStorage.setItem("trccplayer-searchengine", "ddg");
+        }
+    });
+    $("#ggl").click(function() {
+        if (!$(this).hasClass("setactive")) {
+            $(this).addClass("setactive");
+            $("#ddg").removeClass("setactive");
+            searchengine = "ggl";
+            localStorage.setItem("trccplayer-searchengine", "ggl");
         }
     });
 });
@@ -268,7 +288,9 @@ function npup() {
         $("#weg").addClass("down");
         $("#status").animate({
             height: "184px"
-        }, 400, function() {});
+        }, 400, function() {
+            $("#explore").removeClass("hide");
+        });
     }
 }
 
@@ -300,6 +322,7 @@ function offCanvas(id) {
     $("#menuWishlist").removeClass("menuactive");
     $("#menuAbout").removeClass("menuactive");
     $("#menuShortcuts").removeClass("menuactive");
+    $("#menuSettings").removeClass("menuactive");
     $(id).addClass("menuactive");
 }
 
@@ -310,24 +333,35 @@ function page(id) {
             var secondID = "#wishlist";
             var thirdID = "#about";
             var fourthID = "#shortcuts";
+            var fifthID = "#settings"
             break;
         case "#wishlist":
             var mainID = "#wishlist";
             var secondID = "#about";
             var thirdID = "#shortcuts";
-            var fourthID = "#landing";
+            var fourthID = "#settings";
+            var fifthID = "#landing";
             break;
         case "#about":
             var mainID = "#about";
             var secondID = "#shortcuts";
-            var thirdID = "#landing";
-            var fourthID = "#wishlist";
+            var thirdID = "#settings";
+            var fourthID = "#landing";
+            var fifthID = "#wishlist";
             break;
         case "#shortcuts":
             var mainID = "#shortcuts";
+            var secondID = "#settings";
+            var thirdID = "#landing";
+            var fourthID = "#wishlist";
+            var fifthID = "#about";
+            break;
+        case "#settings":
+            var mainID = "#settings";
             var secondID = "#landing";
             var thirdID = "#wishlist";
             var fourthID = "#about";
+            var fifthID = "#shortcuts";
             break;
     }
     if (!$(mainID).hasClass("hide")) {
@@ -344,6 +378,9 @@ function page(id) {
         $(mainID).removeClass("hide");
         $(fourthID).addClass("hide");
         // Hier wieder nach dem Prizip: das was da war kommt weg, und das was wird brauchen kommt her :)
+    } else if (!$(fifthID).hasClass("hide")) {
+        $(mainID).removeClass("hide");
+        $(fifthID).addClass("hide");
     }
 }
 
@@ -427,8 +464,8 @@ function Save() {
 }
 
 function render() {
-    var wishlistHTML = "<ul>\n<li>" + Songs.join("</li>\n<li>") + "</li>\n</ul>";
-    if (wishlistHTML == "<ul>\n<li></li>\n</ul>") {
+    var wishlistHTML = "<ul>\n<li>" + Songs.join("<span></span></li>\n<li>") + "<span></span></li>\n</ul>";
+    if (wishlistHTML == "<ul>\n<li><span></span></li>\n</ul>") {
         // Exeption for worst case scenario
         localStorage.removeItem("trccplayer-wishlist");
         Songs = new Array();
@@ -437,7 +474,11 @@ function render() {
         $("#wishlist").html(wishlistHTML);
     }
     $("#wishlist ul li").click(function() {
-        removeSong($(this).html());
+        search($(this).html().substr(0, $(this).html().length - 13));
+        render();
+    });
+    $("#wishlist ul li span").click(function() {
+        removeSong($(this.parentNode).html().substr(0, $(this.parentNode).html().length - 13).replace("&amp;", "&"));
         render();
     });
 }

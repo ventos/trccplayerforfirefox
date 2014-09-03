@@ -3,8 +3,10 @@
 ### v0.3.3 ###
 
   * `improved` ui
-  * `removed` jamendo and bandcamp search, because of bad search results (may add ddg?!)
-  * `improved` wishlist ui
+  * `removed` jamendo and bandcamp search, because of bad search results (new default ddg)
+  * `improved` wishlist
+  * `changed` play/pause shortcut to space
+  * `added` settings page
 
 ### v0.3.2.2 ###
 

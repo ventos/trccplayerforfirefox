@@ -17,37 +17,41 @@
 				<a id="mbtn"><img src="menu.png"></a>
 				<span id="title">TheRadio.CC - Player</span>
 				<button id="sendung" class="hide"></button>
+				<button id="search"></button>
 				<button id="hoerer"> <span id="listeners">-1</span></button>
 				<button id="weg"></button>
 			</div>
 			<div id="main">
 				<div id="landing">
-					<!-- <div id="buttons">
-						<button id="google" onclick="search('google')">Google</button><br>
-						<button id="jamendo" onclick="search('jamendo')">Jamendo</button><br>
-						<button id="bandcamp" onclick="search('bandcamp')">Bandcamp</button>
-					</div> -->
+					<span id="explore"><span>Herzlichen Glückwunsch!</span><br> Sie haben den Ein-Aus-Klapp-Knopf gefunden :)</span>
 				</div>
 				<div id="about" class="hide">
-					<strong>&Uuml;ber</strong><br>
-					Add-on zum H&ouml;ren von <a href="http://theradio.cc" target="_blank">TheRadio.CC</a>.<br>
-					Hierbei wird ihnen die Typographie von den <a href="http://octicons.github.com" target="_blank">GitHub Octions</a> und Open Sans pr&auml;sentiert ;).<br><br>
-					Quellcode u.&auml;. ist im <a href="https://github.com/ventos/trccplayerforfirefox" target="_blank">GitHub Repo</a> zu finden.
+					Add-on zum H&ouml;ren des Stream von <strong><a href="http://theradio.cc" target="_blank">TheRadio.CC</a>.<br></strong>
+					Es wurden die fantastischen Schriftarten <a href="http://octicons.github.com" target="_blank">GitHub Octicons</a> und Open Sans verwendent.<br><br>
+					Quellcode u.&auml;. ist im <a href="https://github.com/ventos/trccplayerforfirefox" target="_blank">GitHub Repo</a> zu finden, dort k&ouml;nnen auch <a href="https://github.com/ventos/trccplayerforfirefox/issues" target="_blank">Bugs</a> gemeldet werden.
 				</div>
 				<div id="wishlist" class="hide">
 				</div>
+				<div id="settings" class="hide">
+					Zu verwendende Suchmaschine:<br>
+					<ul>
+						<li id="ddg">DuckDuckGo</li>
+						<li id="ggl">Google</li>
+					<ul>
+				</div>
 				<div id="shortcuts" class="hide">
-					<code>Y</code> Play<br>
-					<code>X</code> Stop<br>
+					<code>Leertaste</code> Play/Pause<br>
 					<code>6</code> oder <code>numblock /</code> Mute<br>
 					<code>7</code> oder <code>numblock *</code> Volume Max<br>
 					<code>8</code> oder <code>numblock -</code> Volume -20%<br>
 					<code>9</code> oder <code>numblock +</code> Volume +20%<br>
 				</div>
 				<div id="status">
-					<img id="cover" width="158px" height="158px" src="https://lh3.googleusercontent.com/-TMguqWMRzE8/UxpDZT-lr7I/AAAAAAAAAJM/vtZxqAhcJHs/s600-no/Short%2BLogo%2BNeu.png"></img>
-					<span id="curTitle"><em>Please check your internet connection</em></span>
-					<span id="curArtist"></span>
+					<img id="cover" width="158px" height="158px" src="theradiocc.png"></img>
+					<div id="info">
+						<span id="curTitle"><em>Please check your internet connection</em></span><br>
+						<span id="curArtist"></span>
+					</div>
 					<div id="bar">
 						<button id="add" class="btn"></button><button id="prev" class="btn"></button><button id="play" class="btn"></button><button id="next" class="btn"></button><button id="vol" class="btn"> <span><span id="ls">100</span>%</span></button>
 					</div>
@@ -59,6 +63,7 @@
 				<li id="menuPlayer" class="menuactive">Player</li>
 				<li id="menuWishlist">Merkliste</li>
 				<li id="menuShortcuts">Tastaturk&uuml;rzel</li>
+				<li id="menuSettings">Einstellungen</li>
 				<li id="menuAbout">&Uuml;ber</li>
 			</ul>
 		</div>
