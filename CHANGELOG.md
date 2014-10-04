@@ -1,5 +1,9 @@
 # Changelog #
 
+### v0.3.3.1 ###
+
+  * `changed` hight res logo
+
 ### v0.3.3 ###
 
   * `improved` ui
