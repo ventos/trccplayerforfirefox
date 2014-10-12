@@ -2,7 +2,7 @@
 
 ### v0.3.3.1 ###
 
-  * `changed` hight res logo
+  * `changed` high res logo
 
 ### v0.3.3 ###
 
