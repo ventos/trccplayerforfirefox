@@ -43,6 +43,10 @@ function currentSong() {
                 np = currentTitle.split(" - ");
                 artist = np[0];
                 song = np.join(" - ").substr(artist.length + 3);
+                if (np.length == 1) {
+                    song = artist;
+                    artist = "Unknown";
+                }
                 $('#curTitle').html(song);
                 $('span#curArtist').html(artist);
             }

@@ -1,5 +1,9 @@
 # Changelog #
 
+### v0.3.3.2 ###
+
+  * `fixed` #7
+
 ### v0.3.3.1 ###
 
   * `changed` high res logo
