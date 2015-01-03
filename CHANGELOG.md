@@ -1,5 +1,9 @@
 # Changelog #
 
+#### v0.3.3.2.1 ####
+
+  * `fixed` typo
+
 ### v0.3.3.2 ###
 
   * `fixed` #7
