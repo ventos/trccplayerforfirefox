@@ -19,6 +19,13 @@ No restart!
 ## Install ##
 
 To install this addon: open 'theradiocc-player.xpi' with Firefox
+### Troubleshooting ###
+
+JavaScript has to be allowed for
+
+  * file://
+  * theradio.cc
+  * code.jquery.com
 
 ### Building ###
 
