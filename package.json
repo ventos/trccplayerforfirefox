@@ -2,9 +2,9 @@
   "name": "theradiocc-player",
   "title": "TheRadio.CC - Player",
   "fullName": "TheRadio.CC - Player",
-  "id": "jid0-BlOtEktFWTPtfNiQElNtI3ANfcA",
+  "id": "jid0-BlOtEktFWTPtfNiQElNtI3ANfcA@jetpack",
   "description": "Listen to TheRadio.CC in your Firefox Webbrowser",
   "author": "ventos",
   "license": "GPL 3.0",
-  "version": "0.3.3.2.1"
+  "version": "0.3.3.3"
 }

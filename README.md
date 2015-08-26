@@ -29,15 +29,11 @@ JavaScript has to be allowed for
 
 ### Building ###
 
-Building the addon using the Addon SDK 1.17
+Building the addon using the JPM
 
-    wget https://ftp.mozilla.org/pub/mozilla.org/labs/jetpack/addon-sdk-1.17.zip
-    unzip addon-sdk-1.17.zip
-    cd addon-sdk-1.17
-    source bin/activate
-    cd ..
-    git clone https://github.com/ventos/trccplayerforfirefox.git
-    cd trccplayerforfirefox
-    cfx xpi
+	[sudo] npm install jpm -g
+	git clone https://github.com/ventos/trccplayerforfirefox.git
+	cd trccplayerforfirefox
+	jpm xpi 
 
-You'll get `theradiocc-player.xpi` -> Now you're able to install it.
+You'll get `jid0-BlOtEktFWTPtfNiQElNtI3ANfcA@jetpack.xpi` -> Now you're able to install it.

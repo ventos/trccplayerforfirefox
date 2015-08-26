@@ -1,5 +1,11 @@
 # Changelog #
 
+### v0.3.3.3 ###
+
+  * `added` choose the stream's format
+  * `added` link to the trcc counter page
+  * `changed` cfx to jpm
+
 #### v0.3.3.2.1 ####
 
   * `fixed` typo
