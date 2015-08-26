@@ -5,6 +5,10 @@ var broadcast = false;
 var Song;
 var Songs = new Array();
 var lastttl = "TheRadio.CC - Player";
+var STREAM_URL_OGG = "http://stream.theradio.cc:8000/trcc-stream.ogg";
+var STREAM_URL_OPUS = "http://stream.theradio.cc:8000/trcc-stream.opus";
+var STREAM_URL_LQ = "http://stream.theradio.cc:8000/trcc-stream-lq.ogg";
+var STREAM_URL = "http://stream.theradio.cc:8000/trcc-stream.ogg";
 initWishlist();
 currentSong();
 currentListeners();
@@ -62,11 +66,12 @@ function currentListeners() {
 function playpause() {
     if (!$("#play").hasClass("pause")) {
         $("#play").addClass("pause");
+        document.getElementById("audio").src = STREAM_URL;
         document.getElementById("audio").play();
     } else {
         $("#play").removeClass("pause");
         document.getElementById("audio").src = "";
-        document.getElementById("audio").src = "http://ogg.theradio.cc";
+        document.getElementById("audio").src = STREAM_URL;
         document.getElementById("audio").pause();
     }
 }
@@ -197,6 +202,25 @@ $(function() {
         searchengine = "ddg";
          $("#ddg").addClass("setactive");
     }
+    if (localStorage.getItem("trccplayer-stream") != null) {
+      switch (localStorage.getItem("trccplayer-stream")) {
+        case "ogg":
+          $("#stream_set_ogg").addClass("setactive");
+          STREAM_URL = STREAM_URL_OGG;
+          break;
+        case "opus":
+          $("#stream_set_opus").addClass("setactive");
+          STREAM_URL = STREAM_URL_OPUS;
+          break;
+        case "lq":
+          $("#stream_set_lq").addClass("setactive");
+          STREAM_URL = STREAM_URL_LQ;
+          break;
+        default:
+        $("#stream_set_ogg").addClass("setactive");
+        STREAM_URL = STREAM_URL_OGG;
+      }
+    }
     $("#add").click(function() {
         if (!$("#add").hasClass("added")) {
             addSong();
@@ -268,6 +292,9 @@ $(function() {
     $("#search").click(function() {
         search(currentTitle);
     });
+    $("#hoerer").click(function() {
+	      window.open("http://counter.theradio.cc", "_blanck");
+    });
     $("#ddg").click(function() {
         if (!$(this).hasClass("setactive")) {
             $(this).addClass("setactive");
@@ -284,6 +311,45 @@ $(function() {
             localStorage.setItem("trccplayer-searchengine", "ggl");
         }
     });
+   $("#stream_set_ogg").click(function() {
+     if (!$(this).hasClass("setactive")) {
+         $(this).addClass("setactive");
+         $("#stream_set_opus").removeClass("setactive");
+         $("#stream_set_lq").removeClass("setactive");
+         localStorage.setItem("trccplayer-stream", "ogg");
+         STREAM_URL = STREAM_URL_OGG;
+         if($("#play").hasClass("pause")) {
+           playpause();
+           playpause();
+         }
+     }
+   });
+   $("#stream_set_opus").click(function() {
+     if (!$(this).hasClass("setactive")) {
+         $(this).addClass("setactive");
+         $("#stream_set_ogg").removeClass("setactive");
+         $("#stream_set_lg").removeClass("setactive");
+         localStorage.setItem("trccplayer-stream", "opus");
+         STREAM_URL = STREAM_URL_OPUS;
+         if($("#play").hasClass("pause")) {
+           playpause();
+           playpause();
+         }
+     }
+   });
+   $("#stream_set_lq").click(function() {
+     if (!$(this).hasClass("setactive")) {
+         $(this).addClass("setactive");
+         $("#stream_set_ogg").removeClass("setactive");
+         $("#stream_set_opus").removeClass("setactive");
+         localStorage.setItem("trccplayer-stream", "lq");
+         STREAM_URL = STREAM_URL_LQ;
+         if($("#play").hasClass("pause")) {
+           playpause();
+           playpause();
+         }
+     }
+   });
 });
 
 function npup() {
@@ -420,7 +486,7 @@ function addSong() {
 function removeSong(songToRemove) {
     if (isInWishlist(songToRemove)) {
         /* Vor Replace §$§ hhinzufügen, weil er sonst nicht entferenen kann,
-           und dannach wenn vorhanden, also for split wieder entferenen 
+           und dannach wenn vorhanden, also for split wieder entferenen
            Auch, wenn ich nicht weiß, warum das nicht so sein sollte        */
         var SongString  = "§$§" + Songs.join("§$§");
         var searchthing = "§$§" + songToRemove;
