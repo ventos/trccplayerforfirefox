@@ -1,5 +1,10 @@
 # Changelog #
 
+#### v0.3.3.3a ###
+
+  * `improved` title and listeners count fetching
+
+
 ### v0.3.3.3 ###
 
   * `added` choose the stream's format
