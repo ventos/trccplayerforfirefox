@@ -1,5 +1,3 @@
-var t1 = window.setInterval("currentSong()", 5000);
-var t2 = window.setInterval("currentListeners()", 30000);
 var currentTitle = "";
 var broadcast = false;
 var Song;
@@ -55,12 +53,14 @@ function currentSong() {
                 $('span#curArtist').html(artist);
             }
         });
+	var fetchTitle = window.setTimeout(currentSong, 5000);
 }
 
 function currentListeners() {
     $.get("http://counter.theradio.cc/count.json", function(data) {
       $("#listeners").html(data["listeners"]);
     });
+    var fetchListeners = window.setTimeout(currentListeners, 30000);
 }
 
 function playpause() {
