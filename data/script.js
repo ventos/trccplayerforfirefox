@@ -49,8 +49,8 @@ function currentSong() {
                     song = artist;
                     artist = "Unknown";
                 }
-                $('#curTitle').html(song);
-                $('span#curArtist').html(artist);
+                $('#curTitle').text(song);
+                $('span#curArtist').text(artist);
             }
         });
 	var fetchTitle = window.setTimeout(currentSong, 5000);
@@ -58,7 +58,7 @@ function currentSong() {
 
 function currentListeners() {
     $.get("http://counter.theradio.cc/count.json", function(data) {
-      $("#listeners").html(data["listeners"]);
+      $("#listeners").text(data["listeners"]);
     });
     var fetchListeners = window.setTimeout(currentListeners, 30000);
 }
@@ -100,7 +100,7 @@ function search(query) {
 /******** VOLUME ********/
 
 function volume(mode) {
-    var currentVolume = parseInt($("#ls").html());
+    var currentVolume = parseInt($("#ls").text());
     switch (mode) {
         case "up":
             if (currentVolume <= 80) {
@@ -151,7 +151,7 @@ function changeVol(to, old) {
             audi.volume = 1;
             break;
     }
-    $("#ls").html(to);
+    $("#ls").text(to);
 }
 
 /*******************/
@@ -375,11 +375,11 @@ function npdown () {
 }
 
 function setTitle(name) {
-    titletmp = $("#title").html();
+    titletmp = $("#title").text();
     if (name == "prev") {
-        $("#title").html(lastttl);
+        $("#title").text(lastttl);
     } else {
-        $("#title").html(name);
+        $("#title").text(name);
     }
     lastttl = titletmp;
 }
@@ -539,16 +539,16 @@ function render() {
         // Exeption for worst case scenario
         localStorage.removeItem("trccplayer-wishlist");
         Songs = new Array();
-        $("#wishlist").html("");
+        $("#wishlist").text("");
     } else {
-        $("#wishlist").html(wishlistHTML);
+        $("#wishlist").text(wishlistHTML);
     }
     $("#wishlist ul li").click(function() {
-        search($(this).html().substr(0, $(this).html().length - 13));
+        search($(this).text().substr(0, $(this).text().length - 13));
         render();
     });
     $("#wishlist ul li span").click(function() {
-        removeSong($(this.parentNode).html().substr(0, $(this.parentNode).html().length - 13).replace("&amp;", "&"));
+        removeSong($(this.parentNode).text().substr(0, $(this.parentNode).text().length - 13).replace("&amp;", "&"));
         render();
     });
 }
