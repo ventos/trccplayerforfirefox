@@ -36,4 +36,10 @@ Building the addon using the JPM
 	cd trccplayerforfirefox
 	jpm xpi 
 
-You'll get `jid0-BlOtEktFWTPtfNiQElNtI3ANfcA@jetpack.xpi` -> Now you're able to install it.
+You'll get `jid0-BlOtEktFWTPtfNiQElNtI3ANfcA@jetpack.xpi`
+
+## Signed Versions ##
+
+You need a signed version to install the addon with a *production* setup.  
+Find the latest on [GitHub releases](https://github.com/ventos/trccplayerforfirefox/releases/latest) !
+
