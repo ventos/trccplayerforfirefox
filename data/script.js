@@ -12,7 +12,7 @@ currentSong();
 currentListeners();
 
 function currentSong() {
-    $.get('http://theradio.cc:12011/', function(data) {
+    $.get('http://stream.theradio.cc:12011/', function(data) {
             if (data != currentTitle) {
                 if (data.startsWith("- ") == true) {
                     currentTitle = data.substr(2);
@@ -261,7 +261,7 @@ $(function() {
         fadeOut(400);
         $("#explore").addClass("hide");
         npdown();
-        setTitle("&Uuml;ber");
+        setTitle("Über");
     });
     $("#menuShortcuts").click(function() {
         offCanvas("#menuShortcuts");
@@ -269,7 +269,7 @@ $(function() {
         fadeOut(400);
         $("#explore").addClass("hide");
         npdown();
-        setTitle("Tastaturk&uuml;rzel");
+        setTitle("Tastaturkürzel");
     });
     $("#menuSettings").click(function() {
         offCanvas("#menuSettings");
@@ -455,7 +455,7 @@ function page(id) {
 }
 
 function fadeIn(time) {
-    setTitle("Men&uuml;");
+    setTitle("Menü");
     $("#offcanvas").animate({
         left: "0px"
     }, time, function() {});
@@ -541,14 +541,36 @@ function render() {
         Songs = new Array();
         $("#wishlist").text("");
     } else {
-        $("#wishlist").text(wishlistHTML);
+        // Wohoo! My code works!! Somehow...
+        var wishlistP = document.getElementById("wishlist");
+        if (wishlistP.firstChild) {
+          wishlistP.removeChild(wishlistP.firstChild);
+        }
+        var ul = document.createElement("ul");
+        var tmpwishlist = wishlistHTML.replace("<ul>\n", "").replace("\n</ul>", "");
+        var len = tmpwishlist.split("\n");
+
+        for (var i = 0; i < len.length; i++) {
+          var songinfo = document.createTextNode(len[i].replace("<li>", "").replace("<span></span></li>", ""));
+          var li = document.createElement("li");
+          var closeSpan = document.createElement("span");
+          closeSpan.className = "closebtn";
+          var searchSpan = document.createElement("span");
+          searchSpan.className = "searchbtn";
+          searchSpan.onclick = function() {
+            search($(this.parentNode).text());
+            render();
+          }
+          closeSpan.onclick = function() {
+            removeSong($(this.parentNode).text().replace("&amp;", "&"));
+            render();
+          }
+          li.appendChild(songinfo);
+          li.appendChild(closeSpan);
+          li.appendChild(searchSpan);
+          ul.appendChild(li);
+        }
+
+        wishlistP.appendChild(ul);
     }
-    $("#wishlist ul li").click(function() {
-        search($(this).text().substr(0, $(this).text().length - 13));
-        render();
-    });
-    $("#wishlist ul li span").click(function() {
-        removeSong($(this.parentNode).text().substr(0, $(this.parentNode).text().length - 13).replace("&amp;", "&"));
-        render();
-    });
 }

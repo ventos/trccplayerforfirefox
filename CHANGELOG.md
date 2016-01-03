@@ -1,6 +1,11 @@
 # Changelog #
 
-#### v0.3.3.3a ###
+### v0.3.3.4 ###
+
+  * `fixed` wishlist appearing html tags (replace hole file sometimes is a bad idea)
+  * `fixed` no title information
+
+#### v0.3.3.3a ####
 
   * `improved` title and listeners count fetching
 
@@ -44,7 +49,7 @@
 ### v0.3.2 ###
 
   * `added` volume control
-  
+
 ### v0.3.1.5 ###
 
   * `changed` switched from FontAwesome to Octicons

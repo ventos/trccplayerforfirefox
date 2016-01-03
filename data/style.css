@@ -134,7 +134,7 @@ body {
 		border-top-left-radius: 19px;
 		border-bottom-left-radius: 19px;
 		color: rgb(250, 250, 250);
-	}	
+	}
 		#google { background: rgb(66, 133, 244); }
 		#jamendo { background: rgb(105, 62, 105); }
 		#bandcamp { background: rgb(97, 154, 169); }
@@ -196,7 +196,7 @@ body {
 }
 #explore span { font-size: 27px; }
 #explore:before {
-	content: "\f088  "; 
+	content: "\f088  ";
 	font-family: "octicons";
 	font-size: 28px;
 }
@@ -215,11 +215,18 @@ body {
 #wishlist ul li:hover {
 	background: rgba(8, 101, 183, 0.7);
 }
-#wishlist ul li span:after {
+#wishlist ul li .closebtn:after {
 	content: "\f081";
 	font-family: "octicons";
 	font-size: 18px;
 	float: right;
+}
+#wishlist ul li .searchbtn:after {
+	content: "\f02e";
+	font-family: "octicons";
+	font-size: 18px;
+	float: right;
+	padding-right: 0.6em;
 }
 
 #shortcuts code {
